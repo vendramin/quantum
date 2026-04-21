@@ -992,7 +992,7 @@ Equivalent definitions can be given in terms of the Laplace formula, or the univ
 \begin{definition}\label{def:determinant}
   The \emph{determinant} of a matrix \( A = (a_{ij}) \in \Mat_n(\mathbb{C}) \) is
   \begin{equation}
-    \det(A) = \sum_{\sigma \in \Sym(n)} (-1)^{\sgn(\sigma)} a_{1\sigma(1)} \cdots a_{n\sigma(n)}.
+    \det(A) = \sum_{\sigma \in \Sym(n)} \sgn(\sigma) a_{1\sigma(1)} \cdots a_{n\sigma(n)}.
   \end{equation}
 \end{definition}
 
@@ -1159,7 +1159,7 @@ As an immediate consequence, we can identify any \(n\)-dimensional space (non-un
 
 \begin{corollary}\label{cor:basis-isomorphism}
   For any basis \( \mathcal{B} = (b_{1}, \dots , b_{n})\)  of a vector space \(V\), the map
-  \begin{equation*}
+  \begin{equation}
     \can_{\mathcal{B}} \from
     \mathbb{C}^{n} \to V, \qquad
     \begin{pmatrix}
@@ -1167,7 +1167,7 @@ As an immediate consequence, we can identify any \(n\)-dimensional space (non-un
     \end{pmatrix}
     \mapsto
     \lambda_{1} b_{1} + \dots + \lambda_{n} b_{n}
-  \end{equation*}
+  \end{equation}
   is an isomorphism.
 \end{corollary}
 
@@ -1181,7 +1181,7 @@ One of the most powerful tools in linear algebra is to translate between linear 
       f(b_{j})= a_{1j}c_{1} + \dots + a_{mj} c_{m}\qquad \text{ for all } 1\leq j \leq n.
     \end{equation*}
     \item The following diagram commutes
-    \begin{equation*} %TODO fix labels.
+    \begin{equation}
       \begin{tikzcd}[ampersand replacement=\&,cramped]
         V \&\& W \\\\
         {\mathbb{C}^n} \&\& {\mathbb{C}^m}
@@ -1190,7 +1190,7 @@ One of the most powerful tools in linear algebra is to translate between linear 
         \arrow["{\mu_A}"', from=3-1, to=3-3]
         \arrow["{\can_{\mathcal{C}}}"', from=3-3, to=1-3]
       \end{tikzcd}
-    \end{equation*}
+    \end{equation}
     In other words, we have \(f \can_{ \mathcal{B}} = \can_{\mathcal{C}}\mu_{A}\).
   \end{thmlist}
 \end{proposition}
@@ -1219,7 +1219,7 @@ In particular, the representing matrix of the composition \( g \circ f \) is the
 \begin{proposition}\label{prop:comp-is-matrix-mult}
   Consider linear maps \(f \from V \to W\) and \(g \from W\ \to X\) and bases \(\mathcal{B}= (b_{1}, \dots , b_{n})\) of \(V\), \(\mathcal{C}= (c_{1}, \dots , c_{m})\) of \(W\), and \(\mathcal{D} = (d_{1}, \dots , d_{p})\) of \(X\).
   Let \(F = _{ \mathcal{C}}f_{\mathcal{B}}\) and \( G = _{\mathcal{D}} g_{\mathcal{C}}\) be transformation matrices of \(f\) and \(g\), respectively.
-  Then, the following diagram commutes:
+  Then, the following diagram commutes
   \begin{equation}
     \begin{tikzcd}[ampersand replacement=\&,cramped]
       V \&\& W \&\& X \\
@@ -2130,9 +2130,9 @@ Thus, \(\tr(\rho_{\ket v})=1\) is equivalent to \(\ket{v}\) being normalised.
 
 \begin{proposition}\label{prop:density-matrix-perspective}
   There is an injective map
-  \begin{equation*}
+  \begin{equation}
     \rho:\{\text{pure states of }V\}\to\{ \text{mixed stated of } V\}, \qquad \ket{v} \mapsto \rho_{\ket{v}} \eqdef \ket{v}\bra{v}
-  \end{equation*}
+  \end{equation}
   Its image coincides with the rank \(1\) mixed states.
 \end{proposition}
 \begin{proof}
@@ -2249,7 +2249,7 @@ The following corollary is a reformulation of Lemma~\ref{lem:characterising-the-
 
 \begin{corollary}\label{cor:Bloch-sphere-pure-state}
   There is a bijection between the Bloch sphere and the  states of \( \mathbb{C}^{2}\) given by
-  \begin{equation*}
+  \begin{equation}
     S^{2} \mapsto\left\{ p \in \Mat_{2}( \mathbb{C}) \;\middle\vert\;
       \begin{gathered}
       p \text{ density matrix,}\\
@@ -2261,8 +2261,8 @@ The following corollary is a reformulation of Lemma~\ref{lem:characterising-the-
       r_{y}\\
       r_{z}
     \end{pmatrix}
-    \mapsto \frac{1}{2}(I_{2} + r_{x}\sigma_{x} + r_{y}\sigma_{y} + r_{z} \sigma_{z}).
-  \end{equation*}
+    \mapsto \frac{1}{2}(I_{2}\! +\! r_{x}\sigma_{x}\! +\! r_{y}\sigma_{y}\! +\! r_{z} \sigma_{z}).
+  \end{equation}
 \end{corollary}
 
 The figure below shows the Bloch sphere with \(\ket{0}\) and \(\ket{1}\) as north and south pole and the \(X\)- and \(Y\)-basis as points on the equator.
@@ -2278,7 +2278,7 @@ In order to see what kind of construction we need, we can look at the translatio
 \begin{equation*}
   \inputtikz{motivation-tensor-product}
 \end{equation*}
-In other words we need a construction that combines vector spaces \(V\) and \(W\) such that the resulting space \(T\) has dimension \(\dim V \cdot \dim W\).
+In other words, we need a construction that combines vector spaces \(V\) and \(W\) such that the resulting space \(T\) has dimension \(\dim V \cdot \dim W\).
 This space \(T\) will be the tensor product of \(V\) and \(W\).
 
 \subsubsection{Tensor products of vector spaces}\label{sec:tensor-products-of-vector-spaces}
@@ -2287,17 +2287,78 @@ In order to get some intuition for what will become the tensor product \(T\) of 
 The requirement \(\dim T = \dim V \cdot \dim W\) suggests that \(T\) has a basis behaving like the Cartesian  product \( \mathcal{B} \times \mathcal{C} \).
 To understand \(\mathcal{B}\times \mathcal{C}\) better, let us consider some vector space \(X\) and an assignment \(f\from \mathcal{B}\times \mathcal{C} \to X \).
 Since \(\mathcal{B}\) is a basis of \(V\) and \(\mathcal{C}\) is a basis of \(W\) we can extend \(f\) to a map \(\widehat{f} \from V\times W \to X\) which is linear \emph{in each argument}.
+Spelling out the details of this construction leads to the following definition.
 
 \begin{definition}\label{def:bilinear-map}
   Let \(V,W,X\) be three vector spaces.
   A map \(b \from V\times W\to X\) is called \emph{bilinear} if for all \(\lambda, \mu \in \mathbb{C}\), \(v,v' \in V\), and \(w,w \in W\) we have
-  \begin{gather*}
-    b(v+v', w+w') = b(v, w) + b(v, w') + b(v', w) + b(v', w'), \\
-    b(\lambda v, w) = \lambda b(v, w) \quad  \text{ and }\quad
-    b(v, \mu w) = \mu b(v, w).
-  \end{gather*}
+  \begin{subequations}
+    \begin{gather}
+      b(v+v', w+w') = b(v, w) + b(v, w') + b(v', w) + b(v', w'), \\
+      b(\lambda v, w) = \lambda b(v, w) \quad  \text{ and }\quad
+      b(v, \mu w) = \mu b(v, w).
+    \end{gather}
+  \end{subequations}
 \end{definition}
-Alternatively, \(b\from V\times W \to X\) is a bilinear map if and only if the associated map \(B \from V\to \Hom_{ \mathbb{C}}(W,X)\), \(v\mapsto b(v, \blank)\) is linear, see Exercise~\ref{exe:bilinear-vs-linear-hom}.
+Alternatively, \(b\from V\times W \to X\) is a bilinear map if and only if the associated map \(B \from V\to \Hom_{ \mathbb{C}}(W,X)\), \(v\mapsto b(v, \blank)\) is well-defined and linear, see Exercise~\ref{exe:bilinear-vs-linear-hom}.
+
+\begin{example}
+  A well-known bilinear map is the determinant of \(2 \times 2\) matrices.
+  Consider
+  \begin{equation*}
+    \det \from \mathbb{C}^{2} \times \mathbb{C}^{2} \to \mathbb{C}, \qquad \bigg(
+    \begin{pmatrix}
+      a \\ c
+    \end{pmatrix},
+    \begin{pmatrix}
+      b \\ d
+    \end{pmatrix}
+    \bigg)
+    = ad - bc.
+  \end{equation*}
+  For example, we have
+  \begin{align*}
+    \det \bigg(
+    &
+      \begin{pmatrix}
+        a \\ c
+      \end{pmatrix}
+      +
+      \begin{pmatrix}
+        a' \\ c'
+      \end{pmatrix},
+      \begin{pmatrix}
+        b \\ d
+      \end{pmatrix}
+      \bigg)
+      =
+      \det \bigg(
+      \begin{pmatrix}
+        a + a'  \\ c + c'
+      \end{pmatrix},
+      \begin{pmatrix}
+        b \\ d
+      \end{pmatrix}
+      \bigg)\\
+    & = (a+ a')d - b(c + c') = ad - bc + a'd - bc' \\
+    & =
+      \det \bigg(
+      \begin{pmatrix}
+        a \\ c
+      \end{pmatrix},
+      \begin{pmatrix}
+        b \\ d
+      \end{pmatrix}\bigg)
+      +
+      \det \bigg(
+      \begin{pmatrix}
+        a' \\ c'
+      \end{pmatrix},
+      \begin{pmatrix}
+        b \\ d
+      \end{pmatrix}\bigg).
+  \end{align*}
+\end{example}
 
 \begin{remark}\label{rmk:bilinear-uniquely-def-by-values-on-basis}
   Let \( V \) and \( W \) be vector spaces with bases \( \mathcal{B} \) and \( \mathcal{C} \), respectively, and let \( X \) be a vector space.
@@ -2317,13 +2378,13 @@ If functions \(\mathcal{B}\times \mathcal{C}\to X\) determine bilinear maps and 
 
 \begin{definition}\label{def:tensor-product}
   The \emph{tensor product} of two vector spaces \(V, W\) is a pair \((V\otimes W, \blank \otimes \bblank)\) comprising a vector space \(V\otimes W\) and a bilinear map
-  \begin{equation*}
+  \begin{equation}
     (\blank \otimes \bblank)\from V \times W \to V\otimes W, \qquad (v,w) \mapsto v\otimes w
-  \end{equation*}
+  \end{equation}
   such that for every vector space \(X\) and  bilinear map \(b \from V \times W \to X\) there exists a unique linear map \(f \from V\otimes W \to X\) satisfying
-  \begin{equation*}
+  \begin{equation}
     b(v, w) = f(v \otimes w) \qquad \text{for all } v \in V, w \in W.
-  \end{equation*}
+  \end{equation}
 \end{definition}
 
 We can express the defining condition of the tensor product in terms of the commuting diagram:
@@ -2334,9 +2395,11 @@ We can express the defining condition of the tensor product in terms of the comm
     {V\otimes W}
     \arrow["b \text{ (bilinear)}", from=1-1, to=1-3]
     \arrow["{\blank \otimes \bblank}"', from=1-1, to=3-1]
-    \arrow["{\exists! f}"', dashed, from=3-1, to=1-3]
+    \arrow["{\exists! f \text{ (linear)}}"', dashed, from=3-1, to=1-3]
   \end{tikzcd}
 \end{equation*}
+This defining condition is also called the \emph{universal property of the tensor product}.
+\bigskip
 
 A priori, we do not know whether tensor products exist and, in case they do, if they are unique.
 However, we get a first hint towards a potential construction of tensor products by reconsidering the analogy between classical bits and quantum bits.
@@ -2363,10 +2426,10 @@ We have already seen such a construction  in the context of free vector spaces d
 \end{remark}
 
 \begin{theorem}\label{thm:tensor-product-existence-and-uniqueness}
-  Let \( V \) and \( W \) be vector spaces with bases \( \mathcal{B} = (b_1, \dots, b_n) \) and \( \mathcal{C} = (c_1, \dots, c_m) \), respectively.
+  Let \( V \) and \( W \) be two vector spaces with bases \( \mathcal{B} = (b_1, \dots, b_n) \) and \( \mathcal{C} = (c_1, \dots, c_m) \), respectively.
   Retaining the notation of the previous remark, we write
   \begin{equation*}
-    V\boxtimes W \eqdef \mathrm{Map}(\mathcal{B}\times \mathcal{C}, \mathbb{C}) \cong \big\{ \sum\nolimits_{i=1}^{n}\sum\nolimits_{j=1}^{m}\lambda_{ij}(b_{i}\boxtimes c_{j})\mid \lambda_{ij} \in \mathbb{C}\big\}
+    V\boxtimes W \eqdef \mathrm{Map}(\mathcal{B}\times \mathcal{C}, \mathbb{C}) = \big\{ \sum\nolimits_{i=1}^{n}\sum\nolimits_{j=1}^{m}\lambda_{ij}(b_{i}\boxtimes c_{j})\mid \lambda_{ij} \in \mathbb{C}\big\}
   \end{equation*}
   and define the map
   \begin{equation*}
@@ -2381,11 +2444,11 @@ We have already seen such a construction  in the context of free vector spaces d
 \end{theorem}
 \begin{proof}
   \begin{thmlist}
-    \item The map \( \blank \boxtimes \bblank \) is the bilinear extension of the map
+    \item The map \( \blank \boxtimes \bblank \) is the bilinear extension of
     \begin{equation*}
       \mathcal{B}\times \mathcal{C} \to V\boxtimes W, \qquad (b_{i}, c_{j})\mapsto b_{i}\boxtimes c_{j}
     \end{equation*}
-    and therefore in particular bilinear.
+    to a map \(V \times W \to V \boxtimes W\) and therefore in particular bilinear.
     \item Given a bilinear map \( g \from V \times W \to X \), we define the linear map \( f \from V \boxtimes W \to X \) by \( f(b_i \boxtimes c_j) = g(b_i, c_j) \).
     Note that
     \begin{equation*}
@@ -2394,19 +2457,22 @@ We have already seen such a construction  in the context of free vector spaces d
     implying that \(f(v\boxtimes w) = g(v,w)\) for all \(v\in V\), \(w\in W\).
     In case \(f' \from V\boxtimes W \to X \) also satisfies \(f'(v \boxtimes w) = g(v,w)\) for all \(v\in V\) and \(w\in W\), we in particular have \(f'(b_{i}\boxtimes c_{j}) = f(b_{i} \boxtimes c_{j})\) for all \(b_{i}\in \mathcal{B}\) and \(c_{j}\in \mathcal{C}\), implying that \(f = f'\).
 
-    \item Since \( \blank \otimes \bblank \from V \times W \to V \otimes W \) is bilinear, there exists a unique linear map \( k \from V \boxtimes W \to V \otimes W \) such that \( k(v \boxtimes w) = v \otimes w\).
-    Similarly, since \(( V \otimes W, \blank \otimes \bblank) \) is a tensor product and \( \blank \boxtimes \bblank \from V\times W \to V\boxtimes W\) is bilinear, there exists a unique linear map \( r \from V \otimes W \to V \boxtimes W \) such that \( r(b_i \otimes c_j) = b_i \boxtimes c_j \).
-    In order to show that \(r\circ k = \id_{V\boxtimes W}\), we observe that for all \(v\in V\) and \(w\in W\) we have
+    \item Since \( (\blank \otimes \bblank) \from V \times W \to V \otimes W \) is bilinear, there exists a unique linear map \( k \from V \boxtimes W \to V \otimes W \) such that \( k(v \boxtimes w) = v \otimes w\).
+    Similarly, since \(( V \otimes W, \blank \otimes \bblank) \) is a tensor product and \( (\blank \boxtimes \bblank) \from V\times W \to V\boxtimes W\) is bilinear, there exists a unique linear map \( r \from V \otimes W \to V \boxtimes W \) such that \( r(b_i \otimes c_j) = b_i \boxtimes c_j \).
+    To show that \(r\circ k = \id_{V\boxtimes W}\), we observe that for all \(v\in V\) and \(w\in W\) we have
     \begin{equation*}
       r\circ k (v\boxtimes w) = r(v\otimes w) = v \boxtimes w = \id_{V\boxtimes W} (v\boxtimes w).
     \end{equation*}
-    By uniqueness, we get \(r\circ k = \id_{V\boxtimes W}\).
-    One shows \(k \circ r = \id_{V\otimes W}\) analogously. \qedhere
+    Therefore, \(r\circ k\) and \(\id_{V \boxtimes W}\) coincide on a basis of \(V \boxtimes W\) implying \(r\circ k = \id_{V\boxtimes W}\).
+    Analogously, one shows \(k \circ r = \id_{V\otimes W}\). \qedhere
   \end{thmlist}
 \end{proof}
 
- Due to the above theorem, tensor products are unique up to unique isomorphism.
-With a small abuse of notation, we will speak of the tensor product of \(V\) and \(W\) and denote it by \((V\otimes W, \blank \otimes \bblank)\).
+Due to the above theorem, tensor products are unique up to unique isomorphism.
+\begin{notation}
+  Consider two vector spaces \(V\), \(W\).
+  From now onwards we will, by a slight abuse of notation, speak of \emph{the} tensor product of \(V\) and \(W\) and denote it by \((V\otimes W, \blank \otimes \bblank)\).
+\end{notation}
 
 \begin{definition}\label{def:elementary-tensors}
   Let \((V \otimes W, \blank \otimes \bblank)\) be the tensor product of \(V \otimes W\).
@@ -2414,7 +2480,7 @@ With a small abuse of notation, we will speak of the tensor product of \(V\) and
   In case there are \(v\in V\) and \(w\in W\), such that \(v\otimes w = x\), we refer to \(x\) as an \emph{elementary tensor}.
 \end{definition}
 
-Not all tensors in \( V \otimes W \) are elementary tensors
+Not all tensors in \( V \otimes W \) are elementary tensors.
 However, every tensor in \( V \otimes W \) can be expressed as a finite sum of elementary tensors, thus endowing elementary tensors with a quite important role.
 
 \begin{remark}\label{rmk:bilinearity-on-the-level-of-elementary-tensors}
@@ -2423,10 +2489,10 @@ However, every tensor in \( V \otimes W \) can be expressed as a finite sum of e
   \begin{subequations}
     \begin{gather}
       (v+v')\otimes (w+w') = v\otimes w + v \otimes w' + v' \otimes w + v' \otimes w', \label{eq:tensor-additive}\\
-      (\lambda v) \otimes w = \lambda(v\otimes w) = v \otimes (\lambda w).\label{eq:tensor-scalar-mult}.
+      (\lambda v) \otimes w = \lambda(v\otimes w) = v \otimes (\lambda w).\label{eq:tensor-scalar-mult}
     \end{gather}
   \end{subequations}
-  It is customary to define a linear map \( f \from V \otimes W \to X \) by specifying its action on elementary tensors
+  It is customary to define a linear map \( f \from V \otimes W \to X \) by specifying its behaviour on elementary tensors
   \begin{equation*}
     f \from V \otimes W \to X, \quad v \otimes w \mapsto f(v \otimes w),
   \end{equation*}
@@ -2445,19 +2511,19 @@ Let us now examine the tensor product \( \mathbb{C}^2 \otimes \mathbb{C}^2 \).
 \begin{example}\label{ex:c2-otimes-c2}
   Given vectors \(\ket{v}, \ket{w} \in \mathbb{C}^{2}\), we set \(\ket{vw} \eqdef \ket{v} \otimes \ket{w}\).
   By Theorem~\ref{thm:tensor-product-existence-and-uniqueness} and Remark~\ref{rmk:realisation-of-tensor-products}, the tensor product \( \mathbb{C}^2 \otimes \mathbb{C}^2 \) is four-dimensional and has a basis \( (\ket{00}, \ket{01}, \ket{10}, \ket{11}) \).
-  Thus, it will serves as a quantum analogue of a 2-bit system.
+  Thus, it will serve as a quantum analogue of a 2-bit system.
 \end{example}
 
-We now want to iterate this procedure to describe multi-qubit systems.
+We want to iterate this procedure in order to describe multi-qubit systems.
 
 \begin{remark}\label{rmk:iterated-tensor-products}
   Let \( V, W, X \) be vector spaces.
-  Although the spaces \( (V \otimes W) \otimes X \) and \( V \otimes (W \otimes X) \) are distinct, there exists a canonical isomorphism between them.
+  Although the spaces \( (V \otimes W) \otimes X \) and \( V \otimes (W \otimes X) \) are distinct, yet there exists a canonical isomorphism between them.
   By a slight abuse of notation, we will simply write \( V \otimes W \otimes X \) for either space.
   This construction can be iterated further, allowing us to define the \( n \)-fold tensor product of \( V \) as
-  \begin{equation*}
+  \begin{equation}
     V^{\otimes n} = \underbrace{V \otimes V \otimes \cdots \otimes V}_{n \text{ times}},
-  \end{equation*}
+  \end{equation}
   with the convention that \( V^{\otimes 0} \eqdef \mathbb{C} \).
 
   If \( \mathcal{B} = \{b_1, b_2, \ldots, b_k\} \) is a basis of \( V \), then the set of all tensors of the form
@@ -2467,12 +2533,54 @@ We now want to iterate this procedure to describe multi-qubit systems.
   where \( i_1, i_2, \ldots, i_n \in \{1, 2, \ldots, k\} \), forms a basis for \( V^{\otimes n} \).
 \end{remark}
 
-We can now apply this to describe \( n \)-qubit systems.
+A pragmatic view on iterated tensors comes from computer science.
+\begin{remark}\label{rem:tensors-as-lists-of-lists-of-lists}
+  From a data structures perspective, we may visualise any vector \(v\in \mathbb{C}^{n}\) as a list \(\mathtt{ v = [s_{1}, \dots , s_{n}]}\) of \(n\) (complex) \emph{numbers}.
+  Obviously, lists can contain all sorts of information and in particular vectors themselves.
+  Equivalently, this gives us a list of lists of numbers such as
+  \begin{equation*}
+    \mathtt{t} = \mathtt{[v_{1}, \dots , v_{m}]}
+    = \mathtt{[[s_{11}, \dots , s_{n1}], \dots , [s_{m1}, \dots , s_{mn}]]}.
+  \end{equation*}
+  Given any \(k\in \mathbb{N}\), let us write \((b_{1}, \dots , b_{n})\) for the standard basis of \( \mathbb{C}^{k}\).
+  Then \(\mathtt{t}\) can be used to represent the tensor \(\sum_{i=1}^{m}\sum_{j=1}^{n} s_{ij}e_{i}\otimes e_{j} \in \mathbb{C}^{m}\otimes \mathbb{C}^{n}\).
+
+  By iterating this procedure we can even incorporate higher tensor products.
+  A list of lists of lists of numbers
+  \begin{align*}
+    \mathtt{
+      x} & = \mathtt{[t_{1}, \dots , t_{p}]}
+          =  \mathtt{[[v_{11}, \dots , v_{1m}], \dots , [v_{p1}, \dots , v_{pm}]]} \\
+         & =
+           \begin{aligned}[t]
+              \mathtt{[}
+             & \mathtt{[[s_{111}, \dots , s_{11n}], \dots , [s_{1m1}, \dots , s_{1mn}]],} \\
+             & \mathtt{[[s_{211}, \dots , s_{21n}], \dots , [s_21m1], \dots , s_{2mn}]],} \\
+             & \mathtt{\dots} \\
+             & \mathtt{[[s_{p11}, \dots , s_{p1n}], \dots , [s_{pm1}, \dots , s_{pmn}]],}
+               \mathtt{]}
+           \end{aligned}
+  \end{align*}
+  gives rise to the element \(x = \sum_{i=1}^{p}\sum_{j=1}^{m}\sum_{k=1}^{n} s_{ijk} e_{i}\otimes e_{j} \otimes e_{k} \in \mathbb{C}^{p} \otimes \mathbb{C}^{m} \otimes \mathbb{C}^{n}\).
+
+  In this picture, the only thing changing between vectors, tensors, and iterated tensors  is the type of input of the list: numbers, vector, and tensor, respectively.
+
+  Clearly, one could go beyond the \(3\)-fold tensors shown above and organise  \(r\)-fold tensor products, for \(r\in \mathbb{N}\), as lists of lists of \(\dots\)  of lists of numbers.
+
+  While this recursive definition is more concrete than the universal property we used in the definition of tensor products, it has one significant drawback: the bookkeeping grows exponentially with each tensor power.
+  For our quantum algorithms, we will often look at hundreds of qubits and therefore at spaces like \(( \mathbb{C}^{2})^{\otimes 100}\).
+  Even a single element \(w \in ( \mathbb{C}^{2})^{\otimes 100} \) would have a coefficient list with \(2^{100} \simeq 10^{30}\) entries.
+  This necessitates our abstract point of view.
+\end{remark}
+
+
+The ``memory'' of a quantum computer will be modelled by the states of the \( n \)-qubit system \(( \mathbb{C}^{2})^{\otimes 2}\).
+We will use a notation similar to ordinary bit strings.
 
 \begin{example}\label{ex:n-qubits}
   Given \(\ket{v_{1}}, \dots , \ket{v_{n}} \in \mathbb{C}^{2} \), we write
   \begin{equation}
-    \ket{v_{1} v_{2} \dots v_{n}} \eqdef v_{1} \otimes v_{2} \otimes \dots \otimes v_{n}.
+    \ket{v_{1} v_{2} \dots v_{n}} \eqdef \ket{v_{1}}\otimes \ket{v_{2}} \otimes \dots \otimes \ket{v_{n}}.
   \end{equation}
   Then, the \(2^{n}\)-dimensional space \( (\mathbb{C}^{2})^{\otimes n}\)  has a basis \(\mathcal{B}= (\ket{s_{1} s_{2} \dots s_{n}})_{s\in\{0,1\}^{n}}\).
 \end{example}
@@ -2492,24 +2600,24 @@ With tensor products, we can consider multiple qubits, allowing us to complete t
   This notation suggests that we should also be able to tensor linear maps, a topic we will discuss later.
 \end{remark}
 
-\begin{lemma}\label{lem:unitary-on-tensor-product}
+\begin{proposition}\label{prop:unitary-on-tensor-product}
   Let \( V \) and \( W \) be finite-dimensional Hilbert spaces with inner products \( \braket{\blank}{\bblank}_V \) and \( \braket{\blank}{\bblank}_W \), respectively.
   The tensor product \( V \otimes W \) becomes a Hilbert space with the inner product \(\braket{\blank}{\bblank}_{V \otimes W} \from (V \otimes W) \times (V \otimes W) \to \mathbb{C}\) defined on elementary tensors by
-  \begin{equation*}
+  \begin{equation}
     \braket{v \otimes w}{v' \otimes w'}_{V \otimes W} = \braket{v}{v'}_V \braket{w}{w'}_W \qquad \text{for all } v, v' \in V \text{ and }w, w' \in W.
-  \end{equation*}
-\end{lemma}
+  \end{equation}
+\end{proposition}
 \begin{proof}
   To show that \( \braket{\blank}{\bblank}_{V \otimes W} \) is well-defined, we use the universal property of tensor products.
-  To that end, we want to utilise a small trick.
+  To that end, we want to use a small trick.
   Recall that for any vector space \(V\), we can define a ``conjugate'' space \(\overline{V}\) with the same underlying set and addition as \(V\) but the conjugate scalar multiplication \(\lambda \cdot v \eqdef \overline{\lambda}v\) for all \(\lambda \in \mathbb{C}\)  and \(v \in V\).
   To better distinguish between \(V\) and \(\overline{V}\), we write \(\overline{v} \in \overline{V}\) for the corresponding element \(v\in V\).
 
   By Exercise~\ref{exe:translating-bilinear-to-sesquilinear},
   and the universal property of tensor products, we obtain linear maps
   \begin{align*}
-    [ \blank \mid \bblank]_{V} &\from \overline{V}\otimes V \to \mathbb{C}, \qquad &&\overline{v} \otimes v' \mapsto \braket{v}{v'}_{V}\\
-    [ \blank \mid \bblank]_{W} &\from \overline{W}\otimes W \to \mathbb{C}, \qquad &&\overline{w} \otimes w' \mapsto \braket{w}{w'}_{W}
+    [ \blank \mid \bblank]_{V} &\from \overline{V}\otimes V \to \mathbb{C}, \qquad &&\overline{v} \otimes v' \mapsto \braket{v}{v'}_{V},\\
+    [ \blank \mid \bblank]_{W} &\from \overline{W}\otimes W \to \mathbb{C}, \qquad &&\overline{w} \otimes w' \mapsto \braket{w}{w'}_{W}.
   \end{align*}
   Since complex multiplication is bilinear, the universal property of tensor products implies the existence of a linear map
   \begin{equation*}
@@ -2535,7 +2643,7 @@ With tensor products, we can consider multiple qubits, allowing us to complete t
   Since \( 0 \otimes w = 0 = v \otimes 0 \), the inner product is positive definite.
 \end{proof}
 
-From now on, we endow \( V \otimes W \) with the tensor product inner product defined above.
+From now on, we endow \( V \otimes W \) with the inner product defined above.
 
 \begin{corollary}\label{cor:onbs-tensor-to-onbs}
   Let \(\mathcal{B}\) be an orthonormal basis of \(V\) and \(\mathcal{C}\) an orthonormal basis of \(W\).
@@ -2544,48 +2652,51 @@ From now on, we endow \( V \otimes W \) with the tensor product inner product de
 
 
 \begin{definition}\label{def:entangled-state}
-  A pure state \( \ket{x} \in V \otimes W \) is called \emph{entangled} if there are no \(\ket{v} \in V\) and \(\ket{w} \in W\) such that \(\ket{x}= \ket{vw}\). % TODO Establish Notation!
+  A pure state \( x \in V \otimes W \) is a \emph{product state} or \emph{separable} if \(x = v\otimes w\) for \(v\in V\) and \(w \in W\).
+  Otherwise, we call \(x\) \emph{entangled}.
 \end{definition}
 
 \begin{remark}\label{rmk:comparison-superposition-vs-entanglement}
-  Let \(V\), \(W\) Hilbert spaces with bases \(\mathcal{B}\) and \(\mathcal{C}\).
-  If  \(\ket{x}\in V\otimes W \) is an entangled state, it is in particular in a superposition with respect to the basis \(\mathcal{B}\times \mathcal{C}\) of \(V\otimes W\).
+  Let \(V\), \(W\) be Hilbert spaces with bases \(\mathcal{B}\) and \(\mathcal{C}\).
+  If  \(x\in V\otimes W \) is an entangled state, it is in particular in a superposition with respect to the basis \(\mathcal{B}\times \mathcal{C}\) of \(V\otimes W\).
 \end{remark}
 
 
 \subsubsection{Tensor products of matrices}\label{sec:tensor-products-of-matrices}
-Having established \( (\mathbb{C}^{2})^{\otimes n}\) as the model for the memory of a quantum computer,
-we now want to study its gates.
+Having established \( (\mathbb{C}^{2})^{\otimes n}\) as the model for the memory of a quantum computer, we now want to get a first glimpse at its gates.
 That is, linear maps and matrices between tensor products.
 
 \begin{definition}\label{def:kronecker-product}
-  The \emph{Kronecker product} of the matrices \( A \in \Mat_{m,n}(\mathbb{C}) \) and \( B \in \Mat_{p,q}(\mathbb{C}) \) is the matrix \(A\otimes B \in \Mat_{mp,nq} ( \mathbb{C})\) given by
-  \((A\otimes B)_{ip+k,jq+l}= a_{ij}b_{kl}\) where \((i,k,j,l)\in[m]\times[p]\times[n]\times[q]\).
+  Consider matrices \(A \in \Mat_{m,n}( \mathbb{C})\) and \(B \in \Mat_{p,q}( \mathbb{C})\).
+  The \emph{Kronecker product} of \(A\) and \(B\)
+  % the matrices \( A \in \Mat_{m,n}(\mathbb{C}) \) and \( B \in \Mat_{p,q}(\mathbb{C}) \)
+  is the matrix \(A\otimes B \in \Mat_{mp,nq} ( \mathbb{C})\) given by
+  \((A\otimes B)_{(i-1)p+k,(j-1)q+l}= a_{ij}b_{kl}\) where \((i,k,j,l)\in[m]\times[p]\times[n]\times[q]\).
 \end{definition}
 The Kronecker product \(A\otimes B\) of \(A\) and \(B\)  can be subdivided into blocks of size \(p\times q\) with entries of the  form \(a_{ij}B \in \Mat_{p,q}( \mathbb{C})\):
-\begin{equation*}
+\begin{equation}
   A \otimes B = \begin{pmatrix}
     a_{11}B & a_{12}B & \cdots & a_{1n}B \\
     a_{21}B & a_{22}B & \cdots & a_{2n}B \\
     \vdots  & \vdots  & \ddots & \vdots  \\
     a_{m1}B & a_{m2}B & \cdots & a_{mn}B
   \end{pmatrix} \in \Mat_{mp,nq}(\mathbb{C}).
-\end{equation*}
+\end{equation}
 
 Matrix-vector multiplication involving the Kronecker product can be cumbersome due to its block structure.
 However, by a slight abuse of notations, certain cases can be handled quite efficiently.
 \begin{remark}\label{rmk:matrix-vector-multiplication-Kronecker-product}
   Let \(A\in \Mat_{m,n}( \mathbb{C})\) and \(B \in \Mat_{p,q}( \mathbb{C})\).
   Given a vector \(v\in \mathbb{C}^{n}\) and \(w \in \mathbb{C}^{q}\), we write by a slight abuse of notation
-  \begin{equation*}
+  \begin{equation}
     v\otimes w =
     \begin{pmatrix}
       v_{1} w\\
       v_{2} w\\
-      \vdots
+      \vdots \\
       v_{n} w
     \end{pmatrix} \in \mathbb{C}^{nq},
-  \end{equation*}
+  \end{equation}
   where each \( v_i w \) represents the \(q\) entries \(v_{i}w_{1}, \dots , v_{i}w_{q}\).
 
   With this notation, the action of the Kronecker product \(A\otimes B\) on the tensor product \(v\otimes w\) is given by
@@ -2617,14 +2728,14 @@ We can now extend these string diagrams to include matrices.
 A natural question at this stage is whether we need to be careful with respect to the horizontal alignment of the  boxes, or if they can be moved freely on their strings.
 
 \begin{lemma}\label{lem:eck-hilton}
-  Consider matrices \(A \in Mat_{m,n}( \mathbb{C})\), \(C \in \Mat_{n,p}( \mathbb{C})\), \(B \in \Mat_{r,s}( \mathbb{C})\), and \(D \in \Mat_{t,u}( \mathbb{C})\).
+  Consider matrices \(A \in \Mat_{m,n}( \mathbb{C})\), \(C \in \Mat_{n,p}( \mathbb{C})\), \(B \in \Mat_{r,s}( \mathbb{C})\), and \(D \in \Mat_{s,u}( \mathbb{C})\).
   The Kronecker product and matrix  multiplication satisfy the compatibility relation
   \begin{equation}\label{eq:Kronecker-product-vs-matrix-mult}
     (A\otimes B)(C \otimes D) = AC \otimes BD \in \Mat_{mr,pu}( \mathbb{C}).
   \end{equation}
 \end{lemma}
 \begin{proof}
-  The claim follows from Lemmas~\ref{lem:tensor-product-kronecker-product} and~\ref{lem:comp-vs-tensoring}. %TODO these might become propositions...
+  The claim follows from Proposition~\ref{prop:tensor-product-kronecker-product} and Lemma~\ref{lem:comp-vs-tensoring}. % TODO these might become propositions...
 \end{proof}
 
 String diagrams could either be read vertically first or horizontally first.
@@ -2655,38 +2766,90 @@ Let us now discuss some some fundamental properties of the Kronecker product.
   \begin{thmlist}
     \item The first property follows directly from the definition of complex conjugation on matrices.
     \item For the transpose, we verify the statement by an index-wise computation:
+    \begin{align*}
+      (A \otimes B)^T_{(j-1)q + l, (i-1)p + k}
+      & = (A \otimes B)_{(i-1)p + k, (j-1)q + l}
+        = a_{ij}b_{kl} \\
+      & = A^T_{ji}B^T_{lk}
+        = (A^T \otimes B^T)_{(j-1)q + l, (i-1)p + k}.
+    \end{align*}
+    \item The third property follows from the first two properties, since
     \begin{equation*}
-      (A \otimes B)^T_{jq + l, ip + k} = (A \otimes B)_{ip + k, jq + l} = a_{ij}b_{kl} = A^T_{ji}B^T_{lk} = (A^T \otimes B^T)_{jq + l, ip + k}.
+      (A \otimes B)^\dagger = \overline{(A \otimes B)^T} = \overline{A^T \otimes B^T} = \overline{A^T} \otimes \overline{B^T} = A^\dagger \otimes B^\dagger.
     \end{equation*}
-    \item The third property follows from the first two properties, since \( (A \otimes B)^\dagger = \overline{(A \otimes B)^T} = \overline{A^T \otimes B^T} = \overline{A^T} \otimes \overline{B^T} = A^\dagger \otimes B^\dagger \).
-    \item The fourth property is verified by a direct computation.
+    \item The fourth property is verified by a direct computation. \qedhere
+  \end{thmlist}
+\end{proof}
+
+We considered four invariants to discriminate between different kinds of matrices: trace, rank, determinants, and eigenvalues.
+The next lemma studies how they  behave under the Kronecker product.
+
+\begin{lemma}\label{lem:rank-trace-det-ev-Kronecker}
+  Let \(A \in \Mat_{n}( \mathbb{C})\) and \(B \in \Mat_{m} ( \mathbb{C})\).
+  The following identities hold:
+  \begin{thmlist}
+    \item \(\tr(A\otimes B) = \tr(A)\tr(B)\),
+    \item \(\rk(A\otimes B) = \rk(A) \rk(B)\),
+    \item \(\det(A\otimes B)= \det(A)^{m}\det(B)^{n}\)
+    \item If \(\lambda_{1}, \dots , \lambda_{n} \in \mathbb{C}\) are the eigenvalues of \(A\) and \(\mu_{1}, \dots , \mu_{m}\) are the eigenvalues of \(B\), then \((\lambda_{i}\mu_{j})_{(i,j)\in [n]\times[m]}\) are the eigenvalues of \(A\otimes B\).
+  \end{thmlist}
+\end{lemma}
+\begin{proof}
+  By the Schur decomposition, see Exercise~\ref{exe:schur-decomposition}, there exist invertible matrices \( P \) and \( Q \) such that \( A' = P^{-1}AP \) and \( B' = Q^{-1}BQ \) are upper triangular, with eigenvalues $ \lambda_1, \dots, \lambda_n $ of $ A $ and $ \mu_1, \dots, \mu_m $ of $ B $ as their diagonal entries.
+  The  Kronecker product is
+   \begin{equation*}
+    A' \otimes B' = P^{-1}AP \otimes Q^{-1}BQ = (P \otimes Q)^{-1}(A \otimes B)(P \otimes Q)
+  \end{equation*}
+  and therefore again upper triangular as well.
+  We focus on the diagonal entries of \(A' \otimes B'\), which are given by
+  \begin{equation*}
+    (A' \otimes B')_{(i-1)m +k,(i-1)m +k} = \lambda_{i}\mu_{k}, \qquad\quad i \in [n], k\in[m].
+  \end{equation*}
+  Lastly, note that the trace, rank, determinant, and eigenvalues of \( A \) and \( A' \) coincide, as do those of \( B \) and \( B' \), and similarly for \( A \otimes B \) and \( A' \otimes B' \).
+  \begin{thmlist}
+    \item We compute
+    \begin{equation*}
+      \tr(A\otimes B)
+      = \sum_{i=1}^{n}\sum_{k=1}^{m}(A \otimes B)_{(i-1)m +k,(i-1)m +k}
+      = \sum_{i=1}^{n}\sum_{k=1}^{m} a_{ii}b_{kk}
+      = \tr(A) \tr(B).
+    \end{equation*}
+    \item The ranks of \(A'\), \(B'\), and \(A' \otimes B'\)  coincide with the number of non-zero diagonal entries.
+    Since \((A' \otimes B')_{(i-1)m +k,(i-1)m +k} = 0\) if and only if either \(a'_{ii}=0\) or \(b'_{kk}=0\), we get
+    \(\rk(A\otimes B) = \rk(A' \otimes B' ) = \rk(A') \rk(B') = \rk(A) \rk(B)\).
+    \item The determinants of \(A'\), \(B'\), and \( A' \otimes B' \)  are the respective products of their diagonal entries, leading to
+    \begin{align*}
+      \det(A\otimes B)
+      & = \det(A' \otimes B') = \prod_{i=1}^n \prod_{k=1}^m (a'_{ii} b'_{kk})
+        = \left( \prod_{i=1}^n \lambda_{i} \right)^m \left( \prod_{k=1}^m \mu_{k} \right)^n\\
+      & = \det(A')^m \det(B')^n
+        = \det(A)^m \det(B)^n.
+    \end{align*}
+    \item The eigenvalues of \( A' \otimes B' \) coincide with its diagonal entries and are therefore given by the products \((\lambda_{i}\mu_{j})_{(i,j)\in [n]\times[m]}\) of eigenvalues of \(A\) and \(B\) (counted with their multiplicities). \qedhere
   \end{thmlist}
 \end{proof}
 
 In the context of quantum computing we are mainly interested in unitary matrices, orthogonal projections, and, more abstractly, partial isometries.
+
 \begin{lemma}\label{lem:matrix-properties}
   Let \( A \in \Mat_n(\mathbb{C}) \), \( B \in \Mat_q(\mathbb{C}) \) and
   \(C \in \Mat_{m,n}( \mathbb{C})\), \( D \in \Mat_{p,q}( \mathbb{C})\).
-\begin{thmlist}
-\item If \( A \) and \( B \) are self-adjoint, then \( A \otimes B \) is self-adjoint.
-\item If \( A \) and \( B \) are positive semidefinite, then \( A \otimes B \) is positive semidefinite.
-\item If \( A \) and \( B \) are orthogonal projections, then \( A \otimes B \) is an orthogonal projection.
-\item If \( C \) and \( D \) are partial isometries, then \( C \otimes D \) is a partial isometry.
-\item If \( A \) and \( B \) are unitary, then \( A \otimes B \) is unitary.
-\end{thmlist}
+  \begin{thmlist}
+    \item If \( A \) and \( B \) are self-adjoint, then \( A \otimes B \) is self-adjoint.
+    \item If \( A \) and \( B \) are (self-adjoint and) positive semidefinite, then \( A \otimes B \) is positive semidefinite.
+    \item If \( A \) and \( B \) are orthogonal projections, then \( A \otimes B \) is an orthogonal projection.
+    \item If \( C \) and \( D \) are partial isometries, then \( C \otimes D \) is a partial isometry.
+    \item If \( A \) and \( B \) are unitary, then \( A \otimes B \) is unitary.
+  \end{thmlist}
 \end{lemma}
 \begin{proof}
   We verify each item by a direct computation.
 \begin{thmlist}
   \item If \( A \) and \( B \) are self-adjoint, then \( (A \otimes B)^\dagger = A^\dagger \otimes B^\dagger = A \otimes B \), so \( A \otimes B \) is self-adjoint.
 
-  \item If \( A \) and \( B \) are positive semidefinite, there exist orthonormal bases \( (v_1, \dots, v_n) \) of \( \mathbb{C}^n \) and \( (w_1, \dots, w_q) \) of \( \mathbb{C}^q \) consisting of eigenvectors of \( A \) and \( B \), respectively, with non-negative eigenvalues \( (\lambda_1, \dots, \lambda_n) \) and \( (\mu_1, \dots, \mu_q) \).
-  Then
-  \begin{equation*}
-    (A \otimes B)(v_i \otimes w_j) = Av_i \otimes Bw_j = \lambda_i \mu_j (v_i \otimes w_j),
-  \end{equation*}
-  and \( (v_i \otimes w_j)_{i,j} \) forms a basis of \( \mathbb{C}^{nq} \) consisting of eigenvectors of \( A \otimes B \) with non-negative eigenvalues \( \lambda_i \mu_j \).
-  Thus, \( A \otimes B \) is positive semidefinite.
+  \item The matrix \( A \) is  positive semidefinite if and only if its eigenvalues \(\lambda_{1}, \dots , \lambda_{n} \in \mathbb{C}\) are real and non-negative.
+  Similarly, \(B\) being positive semidefinite is equivalent to its eigenvalues \(\mu_{1}, \dots , \mu_{q}\) being non-negative real numbers.
+  The claim now follows from Lemma~\ref{lem:rank-trace-det-ev-Kronecker}(iv).
   \item If \( A \) and \( B \) are orthogonal projections, then \( A^2 = A \) and \( B^2 = B \).
   We now have
   \begin{equation*}
@@ -2697,43 +2860,45 @@ In the context of quantum computing we are mainly interested in unitary matrices
   \item \( C \) and \( D \) being partial isometries, corresponds to  \( C^\dagger C = P_C \) and \( D^\dagger D = P_D \) being orthogonal projections.
   We compute
   \begin{equation*}
-    (A \otimes B)^\dagger (A \otimes B) = A^\dagger A \otimes B^\dagger B = P_A \otimes P_B,
+    (C \otimes D)^\dagger (C \otimes D) = C^\dagger C \otimes D^\dagger D = P_C \otimes P_D,
   \end{equation*}
-  which is an orthogonal projection by the third property and \(A\otimes B\) is a partial isometry.
+  which is an orthogonal projection by the third property and \(C\otimes D\) is a partial isometry.
   \item We compute
-  \begin{equation*}
+  \begin{align*}
     (A \otimes B)^\dagger (A \otimes B)
-    = A^\dagger A \otimes B^\dagger B
-    = I_n \otimes I_q
-    = I_{nq}
-    =  I_n \otimes I_q
-    = A A^\dagger \otimes B B^\dagger
-    = (A \otimes B)(A \otimes B)^\dagger.
-  \end{equation*}
+    & = A^\dagger A \otimes B^\dagger B
+      = I_n \otimes I_q\\
+    & = I_{nq}
+      =  I_n \otimes I_q
+      = A A^\dagger \otimes B B^\dagger
+      = (A \otimes B)(A \otimes B)^\dagger.
+  \end{align*}
   Thus, \( A \otimes B \) is unitary. \qedhere
 \end{thmlist}
 \end{proof}
 
+By combining the previous two lemmas, we can describe Kronecker products of density matrices.
+
 \begin{corollary}\label{cor:tensor-product-of-density-matrices}
-The tensor product of two density matrices \( A \in \Mat_{n}(\mathbb{C}) \) and \( B \in \Mat_{m}(\mathbb{C}) \) is a density matrix.
+  The tensor product of two density matrices \( A \in \Mat_{n}(\mathbb{C}) \) and \( B \in \Mat_{m}(\mathbb{C}) \) is a density matrix.
+  Moreover, \(A\) and \(B\) represent pure states if and only if  \(A\otimes B\) represents a pure state.
 \end{corollary}
 \begin{proof}
-By Lemma~\ref{lem:matrix-properties}, \( A \otimes B \) is self-adjoint and positive semidefinite. It remains to show that \( \tr(A \otimes B) = 1 \). Using the block matrix form of the Kronecker product, we have:
-\begin{equation*}
-\tr(A \otimes B) = \sum_{i=1}^m \sum_{j=1}^n a_{ii}b_{jj} = \left( \sum_{i=1}^m a_{ii} \right) \left( \sum_{j=1}^n b_{jj} \right) = \tr(A) \tr(B) = 1 \cdot 1 = 1. \qedhere
-\end{equation*}
+  By Lemma~\ref{lem:matrix-properties}, \( A \otimes B \) is self-adjoint and positive semidefinite and Lemma~\ref{lem:rank-trace-det-ev-Kronecker} shows that \(\tr(A\otimes B) = \tr(A)\tr(B) = 1\).
+  Finally, \(\rk(A\otimes B) = \rk(A)\rk(B) = 1\) if and only if \(\rk(A) = 1\) and \(\rk(B)=1\).
+  That is, \(A\) and \(B\) are density matrices of pure states.
 \end{proof}
 
 \subsubsection{Tensor products of linear maps}\label{sec:tensor-products-of-linear-maps}
 
-Since working with iterated Kronecker products can be cumbersome, we want  to hide the complexity behind an layer of abstraction: tensor products of linear maps.
+To simplify the handling of iterated Kronecker products, we introduce a more abstract framework: the tensor product of linear maps.
 
 \begin{lemma}\label{lem:existence}
   Let \( f \from V \to W \) and \( g \from X \to Y \) be linear maps.
   There exists a unique linear map \( f \otimes g \from V \otimes X \to W \otimes Y \) such that
-  \begin{equation*}
+  \begin{equation}
     (f \otimes g)(v \otimes x) = f(v) \otimes g(x)
-  \end{equation*}
+  \end{equation}
   for all \( v \in V \) and \( x \in X \).
 \end{lemma}
 \begin{proof}
@@ -2745,7 +2910,7 @@ Since working with iterated Kronecker products can be cumbersome, we want  to hi
 
 A natural question is how to translate between the tensor product of linear maps and the Kronecker product of matrices.
 
-\begin{lemma}\label{lem:tensor-product-kronecker-product}
+\begin{proposition}\label{prop:tensor-product-kronecker-product}
   Consider two linear maps \(f\from V\to W\) and \(g\from X\to Y\) and suppose that \(V\) and \(X\) have the bases \(\mathcal{B}_{V} = (v_{1}, \dots , v_{n})\) and \(\mathcal{B}_{X} = (x_{1}, \dots , x_{q})\) and \(W\) as well as \(Y\) have the bases \(\mathcal{C}_{W}= (w_{1}, \dots , w_{m})\) and \(\mathcal{C}_{Y}=(y_{1}, \dots , y_{p})\).
 
   We endow \(V\otimes X\) and \(W\otimes Y\) with the bases
@@ -2755,7 +2920,7 @@ A natural question is how to translate between the tensor product of linear maps
   \end{gather*}
   and write \(F= {}_{\mathcal{C}_{W}}f_{\mathcal{B}_{V}}\) and \(G = {}_{\mathcal{C}_{Y}}g_{\mathcal{B}_{X}}\).
   Then, the following diagram commutes
-  \begin{equation*}
+  \begin{equation}
     \begin{tikzcd}[ampersand replacement=\&,cramped]
       {V\otimes X} \&\& {W\otimes Y} \\
       \\
@@ -2765,8 +2930,8 @@ A natural question is how to translate between the tensor product of linear maps
       \arrow["{\mu_{F\otimes G}}"', from=3-1, to=3-3]
       \arrow["{\can_{\mathcal{B}_{W\otimes Y}}}"', from=3-3, to=1-3]
     \end{tikzcd}
-  \end{equation*}
-\end{lemma}
+  \end{equation}
+\end{proposition}
 \begin{proof}
   Given \(1\leq i \leq n\) and \(1\leq j \leq q\), we compute
   \begin{align*}
@@ -2779,7 +2944,7 @@ A natural question is how to translate between the tensor product of linear maps
   \end{align*}
 \end{proof}
 
-As with matrices, we want to establish compatibility between the orders of composition and tensoring.
+As with matrices, we want to establish a compatibility between the orders of composition and tensoring.
 
 \begin{lemma}\label{lem:comp-vs-tensoring}
   Let \(f\from V\to W\), \(g\from W\to X\) and \(h\from A \to B\), \(k \from B\to C\) be linear maps.
@@ -2799,10 +2964,10 @@ As with matrices, we want to establish compatibility between the orders of compo
   \end{align*}
 \end{proof}
 
-As with matrices, we can represent tensor products of linear maps using string diagrams.
+We can represent tensor products of linear maps using string diagrams.
 
 \begin{remark}\label{rmk:string-diags-tensoring-linear-maps}
-  The diagram,representing the tensor product of linear  maps \(f\from V\to W\) and \(g\from X\to Y\)
+  The diagram, representing the tensor product of linear  maps \(f\from V\to W\) and \(g\from X\to Y\)
   is shown below.
   \begin{equation*}
     \inputtikz{tensor-product-of-lin-maps}
@@ -2823,15 +2988,17 @@ To address the first issue, we need to look at the dual of a space \(V\).
 
 \begin{definition}\label{def:dual-basis}
   Let \(\mathcal{B} = (b_{1}, \dots , b_{n})\) be a basis of a vector space \(V\).
-  The \emph{dual basis} \(\rd*{B}= (\beta_{1}, \dots , \beta_{n})\) is given by the linear maps
+  The \emph{dual basis} \(\rd*{B}= (\beta_{1}, \dots , \beta_{n})\) is given by the linear maps \( \beta_{i} \from V \to \mathbb{C}\), satisfying for all \(1\leq i,j \leq n\) the relation
   \begin{equation*}
-    \beta_{i} \from V \to \mathbb{C}, \qquad b_{j}\mapsto
+    \beta_{i}(b_{j})=
     \begin{cases}
       1 & i=j \\
       0 & \text{otherwise.}
     \end{cases}
   \end{equation*}
 \end{definition}
+
+If \(V\) is a Hilbert space with (orthonormal) basis \(\mathcal{B}\), its dual basis is simply the image \(d( \mathcal{B})\) of \(\mathcal{B}\) under the Riesz-map.
 
 \begin{lemma}\label{lem:dual-basis-is-basis}
   Let \(\mathcal{B}= (b_{1}, \dots , b_{n})\) be a basis of \(V\).
@@ -2843,11 +3010,17 @@ To address the first issue, we need to look at the dual of a space \(V\).
   Clearly, this linear combination is unique and the claim follows.
 \end{proof}
 
+Suppose \(\ket{v} \in V\) is a normalised vector  of a Hilbert space.
+It gives  rise to an element \(\ket{v} \otimes \bra{v} \in V \otimes \rd*{V}\) to which we associate the mixed state \(\ket{v}\bra{v} \from V\to V\).
+This suggests that there is a (linear) map \(V \otimes \rd*{V} \to \End_{ \mathbb{C}}(V)\).
+
+
+
 \begin{proposition}\label{prop:can-iso}
   For any finite-dimensional vector space \(V\) there is an isomorphism
   \begin{align*}
-    \mathrm{dk} \from \rd*{V} \otimes V &\to \End_{ \mathbb{C}}(V)\\
-    \gamma \otimes v &\mapsto (w \mapsto \gamma(w)v).
+    \mathrm{dk} \from V\otimes \rd*{V} &\to \End_{ \mathbb{C}}(V)\\
+    v \otimes \gamma  &\mapsto (w \mapsto \gamma(w)v).
   \end{align*}
 \end{proposition}
 \begin{proof}
@@ -2856,15 +3029,14 @@ To address the first issue, we need to look at the dual of a space \(V\).
   where
   \begin{equation*}
     (E_{ij})_{kl}=
-  \begin{cases}
-    1 & k=i, j=l \\
-    0 & \text{otherwise.}
-  \end{cases}
-\end{equation*}
+    \begin{cases}
+      1 & k=i, j=l \\
+      0 & \text{otherwise.}
+    \end{cases}
+  \end{equation*}
   We have linear isomorphisms
-  %Establish notation \(E_{ij}\).
   \begin{align*}
-    k\from \rd*{V} \otimes V &\to \Mat_{n}( \mathbb{C}),\qquad  \beta_{i}\otimes b_{j}\mapsto E_{ij} \\ % or should it be E_{ji} please check.
+    k\from  V\otimes \rd*{V} &\to \Mat_{n}( \mathbb{C}),\qquad  b_{i}\otimes \beta_{j}\mapsto E_{ij} \\
     d \from \Mat_{n}( \mathbb{C}) &\to \End_{ \mathbb{C}}(V), \qquad A \mapsto \mu_{A}.
   \end{align*}
   Thus the composition \(\mathrm{dk} = d\circ k\) is an isomorphism as well.
@@ -2872,25 +3044,21 @@ To address the first issue, we need to look at the dual of a space \(V\).
 
 The space \(\End_{ \mathbb{C}}(V)\) has a distinguished element, namely \(\id_{V}\).
 By choosing a basis \(\mathcal{B}\) of \(V\), this corresponds under the isomorphism \(\mathrm{dk}^{-1} \from \End_{ \mathbb{C}}(V) \to \rd*{V} \otimes V\) to \(\sum_{i=1}^{n} \beta_{i}\otimes b_{i}\).
-
-Moreover, we can associate to any endomorphism \(f\in \End_{ \mathbb{C}}(V) \) its trace \(\tr(f) \in \mathbb{C}\).
-By applying \(\mathrm{dk}^{-1}\from \End_{ \mathbb{C}}(V) \to \rd*{V} \to V\), it is not difficult to see that this corresponds to the assignment \(\gamma \otimes v \mapsto \gamma(v)\).
-
 \begin{definition}\label{def:cap-cup}
   Let \(V\) be a finite-dimensional vector space, \(\mathcal{B} =( b_{1}, \dots , b_{n})\) a basis of \(V\) and \(\rd*{\mathcal{B}} = (\beta_{1}, \dots , \beta_{n})\) its dual basis.
   The linear maps
   \begin{subequations}
     \begin{align}
-      \coev &\from \mathbb{C} \to \rd*{V}\otimes V,& \lambda &\mapsto \lambda \sum\nolimits_{i=1}^{n}\beta_{i}\otimes b_{i},\\
-      \overline{\coev} &\from \mathbb{C} \to  V\otimes \rd*{V}, &\lambda &\mapsto \lambda \sum\nolimits_{i=1}^{n}b_{i} \otimes \beta_{i}
+      \coev_{V} &\from \mathbb{C} \to \rd*{V}\otimes V,& \lambda &\mapsto \lambda \sum\nolimits_{i=1}^{n}\beta_{i}\otimes b_{i},\\
+      \widetilde{\coev}_{V} &\from \mathbb{C} \to  V\otimes \rd*{V}, &\lambda &\mapsto \lambda \sum\nolimits_{i=1}^{n}b_{i} \otimes \beta_{i}
     \end{align}
   \end{subequations}
   are called right and left \emph{coevaluation}.
   Similarly, the right and left \emph{evaluations} are
   \begin{subequations}
     \begin{align}
-      \ev &\from \rd*{V}\otimes V \to \mathbb{C}, &\gamma\otimes v &\mapsto \gamma(v) \\
-      \overline{\ev} &\from V\otimes \rd*{V} \to \mathbb{C}, &v \otimes \gamma& \mapsto \gamma(v)
+      \ev_{V} &\from V\otimes \rd*{V} \to \mathbb{C}, &v \otimes \gamma& \mapsto \gamma(v),  \\
+      \widetilde{\ev}_{V} &\from \rd*{V} \otimes V \to \mathbb{C}, &\gamma\otimes v &\mapsto \gamma(v).
     \end{align}
   \end{subequations}
 \end{definition}
@@ -2905,38 +3073,191 @@ Note that passing from a vector space \(V\) to its dual space \(\rd*{V}\) revers
   \inputtikz{dual-space-as-string-diagram}
 \end{equation*}
 
+\begin{example}\label{ex:bell-state}
+  Consider the space \( \mathbb{C}^{2}\) with the computational basis \((\ket{0}, \ket{1})\).
+  The dual basis for \(\rd*{V}\) is \((\bra{0}, \bra{1})\)
+  and the coevaluation map yield the normalised vector
+  \begin{equation*}
+    \widetilde{\coev}_{ \mathbb{C}^{2}}(\tfrac{1}{\sqrt{2}}) = \tfrac{1}{\sqrt2}(\ket{0}\bra{0} +\ket{1}\bra{1})
+  \end{equation*}
+  By applying the inverse of the Riesz map \(d \from \mathbb{C}^{2}\to \rd*{\mathbb{C}^{2}}\) to the second component, we obtain the \emph{Bell state}
+  \begin{equation*}
+    \Phi^{+} = \tfrac{1}{\sqrt{2}} (\ket{0} \otimes \ket{0} + \ket{1} \otimes \ket{1})
+    = \tfrac{1}{\sqrt{2}} (\ket{00} + \ket{11}) \in ( \mathbb{C}^{2})^{\otimes 2}.
+  \end{equation*}
+  This is an entangled state.
+\end{example}
+
 \begin{lemma}\label{lem:cap-cup}
   The left and right (co)-evaluations of a finite-dimensional vector space \(V\) satisfy the snake identities
-\begin{align*}
-  (\id_{V} \otimes \ev_{V})(\coev_{V} \otimes \id_{V}) = \id_{V}\qquad  \text{ and}\qquad
-  (\ev_{V}\otimes \id_{\rd*{V}})(\id_{\rd*{V}}\otimes \coev_{V}) = \id_{\rd*{V}}, \\
-    (\overline{\ev}_{V} \otimes \id_{V})(\id_{V} \otimes \overline{\coev}_{V}) = \id_{V}\qquad  \text{ and}\qquad
-  (\id_{\rd*{V}} \otimes \overline{\ev_{V}})(\overline{\coev_{V}} \otimes \id_{\rd*{V}}) = \id_{\rd*{V}}. \\
-\end{align*}
+  \begin{align*}
+    (\ev_{V}\otimes \id_{V})(\id_{V} \otimes \coev_{V}) = \id_{V}\qquad  \text{ and}\qquad
+    (\id_{\rd*{V}}\otimes \ev_{V})(\coev_{V} \otimes \id_{\rd*{V}}) = \id_{\rd*{V}}, \\
+    %
+    (\id_{V} \otimes \widetilde{\ev}_{V})(\widetilde{\coev}_{V} \otimes \id_{V}) = \id_{V}\qquad  \text{ and}\qquad
+    (\widetilde{\ev}_{V} \otimes \id_{\rd*{V}})(\id_{\rd*{V}} \otimes \widetilde{\coev}_{V} ) = \id_{\rd*{V}}. \\
+  \end{align*}
 \end{lemma}
 In string-diagrammatic form, the previous result can be expressed as follows.
 \begin{equation*}
-  \inputtikz{snake-identity} % include once picture is typeset
+  \inputtikz{snake-identity}
 \end{equation*}
 
-Observation: we can now ``close'' string diagrams.
-These represent a linear map \( \gamma \from \mathbb{C} \to \mathbb{C}\) and any such map corresponds to a number \(\gamma(1) \in \mathbb{C}\). %<- here we only need that that linear maps c\to c and complex numbers can be identified with each other.
+\begin{definition}\label{def:dual-map}
+  Given a linear map \(f\from V\to W\), we define its \emph{dual map} as the composition
+  \begin{equation}
+    \rd*{f} \eqdef (\id_{\rd*{V}}\otimes \ev_{W})(\id_{\rd*{V}}\otimes f \otimes \id_{\rd*{W}})(\coev_{V}\otimes \id_{\rd*{W}}) \from \rd*{W} \to \rd*{V}
+  \end{equation}
+\end{definition}
+
+In diagrams, the dual morphism simply is:
+\begin{equation*}
+  \inputtikz{dual-morphism}
+\end{equation*}
+
+
+Evaluations and coevaluations allow us to  ``close'' string diagrams.
+Such closed loops represent linear maps \( \gamma \from \mathbb{C} \to \mathbb{C}\) and in particular the number \(\gamma(1) \in \mathbb{C}\).
+
 
 \begin{proposition}\label{prop:traces}
   For any linear map \(f\ \from V\to V\), we have
-  \begin{equation*}
-    \tr(f) = \ev_{V} (f\otimes \id_{\rd*{V}}) \overline{\coev}_{V} = \overline{\ev_{V}} (\id_{\rd*{V}}\otimes f) \coev_{V}.
-  \end{equation*}
+  \begin{equation}
+    \tr(f)
+    = \big(\ev_{V} (f\otimes \id_{\rd*{V}}) \widetilde{\coev}_{V}\big)(1)
+    = \big(\widetilde{\ev}_{V} (\id_{\rd*{V}}\otimes f) \coev_{V}\big)(1).
+  \end{equation}
 \end{proposition}
 \begin{proof}
-  The claim follows from a direct computation.
+  The claim follows from the computation
   \begin{equation*}
-   \ev_{V} (f\otimes \id_{\rd*{V}}) \overline{\coev}_{V} =  \sum_{i=1}^{n} \beta_{i}(f(b_{i})) = \tr(f). \qedhere
+   \big(\ev_{V} (f\otimes \id_{\rd*{V}}) \widetilde{\coev}_{V}\big)(1) =  \sum_{i=1}^{n} \beta_{i}(f(b_{i})) = \tr(f). \qedhere
   \end{equation*}
 \end{proof}
 
+The trace of a linear map \(f \from V\to V \) corresponds to the following closed loop.
+\begin{equation*}
+  \inputtikz{trace}
+\end{equation*}
 
-% TODO Partial traces
+To any given linear map \(g \from W\otimes V \to X\otimes V\), we can associate another linear map
+\(\mathrm{Tr}_{W,X}^{V}(g) \from W\to X\), obtained by ``closing'' the \(V\)-labelled strings
+\begin{equation*}
+  \inputtikz{partial-trace}
+\end{equation*}
+
+\begin{definition}\label{def:partial-trace}
+  Let \(V,W\) and \(X\) be three vector spaces.
+  The linear map
+  \begin{equation}
+    \begin{aligned}
+      \mathrm{Tr^{V}_{W,X}} \from \Hom_{ \mathbb{C}}(W\otimes V, X \otimes V) &\to \Hom_{ \mathbb{C}}(W, X), \\
+      g &\mapsto (\id_{W} \otimes \ev_{V}) (g\otimes \id_{\rd*{V}}) (\id_{W}\otimes \widetilde{\coev}_{V})
+    \end{aligned}
+  \end{equation}
+  is called a \emph{partial trace}.
+\end{definition}
+
+Like usual traces, partial traces can be computed using inner products.
+
+\begin{lemma}\label{lem:how-to-compute-partial-traces}
+  Consider a linear map \(f\from W\otimes V \to W \otimes V\) between tensor products of Hilbert spaces and let \(\mathcal{B} = (b_{1}, \dots , b_{n})\) be an orthonormal basis of \(V\).
+  The partial trace satisfies for all  \(w,x \in W\) the identities
+  \begin{subequations}
+    \begin{align}
+      \braket{w}{\mathrm{Tr}_{W,W}^{V}(f) x}_{W}
+      = \sum_{i=1}^{n} \braket{w \otimes b_{i}}{f(x\otimes b_{i})}_{V\otimes W},\\
+      \braket{\mathrm{Tr}_{W,W}^{V}(f)w}{x}_{W}
+      = \sum_{i=1}^{n} \braket{f(w \otimes b_{i})}{x\otimes b_{i}}_{V\otimes W}
+    \end{align}
+  \end{subequations}
+\end{lemma}
+\begin{proof}
+  Since every element \( f\in \End(W\otimes V)\) can be written as a linear combination \(f= \sum_{i=1}^{r} g_{i}\otimes h_{i}\), with \(g_{i} \from W \to W\) and \(h_{i} \from V\to V\), and  \(\mathrm{Tr}_{W,W}^{V}\) is linear, we may assume without loss of generality that \(f = g\otimes h\) is a tensor product of maps \(g\from W\to W\) and \(h \from V \to V\).
+  Let \(\rd*{ \mathcal{B}} = (\beta_{1}, \dots , \beta_{n})\) be the dual basis of \(\mathcal{B}\).
+  We have
+  \begin{align*}
+    \braket{w}{\mathrm{Tr}_{W,W}^{V}(f) x}_{W}
+    & = \braket*{w}{\big((\id_{W} \otimes \ev_{V}) (f\otimes \id_{\rd*{V}}) (\id_{W}\otimes \widetilde{\coev}_{V})\big) x}_{W}\\
+    & = \sum_{i=1}^{n} \braket*{w}{\big((\id_{W} \otimes \ev_{V}) (f\otimes \id_{\rd*{V}})\big) x\otimes b_{i} \otimes \beta_{i}}_{W} \\
+    & = \sum_{i=1}^{n} \braket*{w}{(\id_{W} \otimes \ev_{V}) (g(x) \otimes h(b_{i}) \otimes \beta_{i})}_{W} \\
+    & = \sum_{i=1}^{n} \beta_{i}(h(b_{i})) \braket{w}{g(x)}_{W}\\
+    & = \sum_{i=1}^{n} \braket{b_{i}}{h(b_{i})}_{V} \braket{w}{g(x)}_{W} \\
+    & = \sum_{i=1}^{n} \braket{w \otimes b_{i}}{f(x \otimes b_{i})}_{V\otimes W}.
+  \end{align*}
+  We conclude the proof by noting
+  \begin{align*}
+    \braket{\mathrm{Tr}_{W,W}^{V}(f)w}{x}_{W}
+    & = \overline{\braket{x}{\mathrm{Tr}_{W,W}^{V}(f)w}_{W}}
+      = \sum_{i=1}^{n} \overline{\braket{x \otimes b_{i}}{f(w \otimes b_{i})}_{V\otimes W}} \\
+    & = \sum_{i=1}^{n} \braket{f(w \otimes b_{i})}{x \otimes b_{i}}_{V\otimes W}. \qedhere
+  \end{align*}
+\end{proof}
+
+Partial traces allow us to reduce a composite system to a smaller subsystem.
+
+\begin{proposition}\label{prop:reduction-via-partial-trace}
+  Let \(V\) and \(W\) be finite-dimensional Hilbert spaces and consider a mixed state \(\rho \from W\otimes V \to W\otimes V\).
+  Then \(\mathrm{Tr}^{V}_{W,W} \from W\to W\) is a mixed state on \(W\).
+\end{proposition}
+
+\begin{proof}
+  We need to show that \( \rho'= \mathrm{Tr}^{V}_{W,W}\) is self-adjoint, positive semi-definite, and has trace \(1\).
+  To that end, we fix an orthonormal basis \(\mathcal{B} = (b_{1}, \dots , b_{n})\) of \(V\).
+  Using Lemma~\ref{lem:how-to-compute-partial-traces}, we observe for all \(w,x\in W\) that
+  \begin{align*}
+    \braket{w}{\mathrm{Tr}_{W,W}^{V}(f) x}_{W}
+    & = \sum_{i=1}^{n} \braket{w \otimes b_{i}}{f(x\otimes b_{i})}_{V\otimes W}
+      = \sum_{i=1}^{n} \braket{f(w \otimes b_{i})}{x\otimes b_{i}}_{V\otimes W}\\
+    &  = \braket{\mathrm{Tr}_{W,W}^{V}(f) w}{x}_{W}\\[0.25\baselineskip]
+    \braket{w}{\mathrm{Tr}_{W,W}^{V}(f) w}_{W}
+     & = \sum_{i=1}^{n} \braket{w \otimes b_{i}}{f(w\otimes b_{i})}_{V\otimes W}\geq 0
+  \end{align*}
+  Finally, let \((c_{1}, \dots , c_{m})\) be an orthonormal basis of \(W\).
+  We compute
+  \begin{equation*}
+    \tr(\mathrm{Tr}_{W,W}^{V}(f))
+    = \sum_{j=1}^{m}\braket{c_{j}}{\mathrm{Tr}_{W,W}^{V}(f)c_{j}}
+    = \sum_{j=1}^{m}\sum_{i=1}^{n} \braket{c_{j} \otimes b_{i}}{f(c_{j}\otimes b_{i})}_{V\otimes W}
+    = \tr(f)
+    = 1.\qedhere
+  \end{equation*}
+\end{proof}
+
+To see this procedure in action, we apply it to the Bell state on \( \mathbb{C}^{2}\otimes \mathbb{C}^{2}\).
+\begin{example}
+  Consider the pure represented by
+  \begin{equation*}
+    \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11}).
+  \end{equation*}
+  The corresponding mixed state is \(\rho = \ket{\Phi^{+}}\bra{\Phi^{+}}\in \End_{ \mathbb{C}}( \mathbb{C}^{2}\otimes \mathbb{C}^{2})\).
+  Its transformation matrix with respect to the computational basis \((\ket{00}, \ket{01}, \ket{10}, \ket{11})\) is
+  \begin{equation*}
+    \frac{1}{2}
+    \begin{pmatrix}
+      1 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+      1 & 0 & 0 & 1
+    \end{pmatrix}.
+  \end{equation*}
+
+  To compute the partial trace over the second qubit, we use the computational basis \(\{\ket{0}, \ket{1}\}\) of \( \mathbb{C}^{2}\) and apply Lemma~\ref{lem:how-to-compute-partial-traces} to get
+  \begin{align*}
+    \braket{0}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 0}
+    & = \braket{00}{\rho \mid 00} + \braket{01}{\rho \mid 01}
+      = \tfrac{1}{2}, \\
+    \braket{0}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 1}
+    & = \braket{00}{\rho \mid 10} + \braket{01}{\rho \mid 11}
+      = 0, \\
+    \braket{1}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 0}
+    & = \braket{10}{\rho \mid 00} + \braket{11}{\rho \mid 01}
+      = 0, \\
+    \braket{1}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 1}
+    & = \braket{10}{\rho \mid 10} + \braket{11}{\rho \mid 11}
+      = \tfrac{1}{2}.
+  \end{align*}
+\end{example}
 
 Given two vector spaces \(V,W\) we have a bilinear map
 \begin{equation*}
@@ -2944,10 +3265,10 @@ Given two vector spaces \(V,W\) we have a bilinear map
 \end{equation*}
 
 \begin{definition}\label{def:tensor-flip}
-  Let \(V\), \(W\) be two vector spaces.
+  Suppose \(V\) and \(W\) are two vector spaces.
   The \emph{tensor flip} or \emph{swap map} is the linear map
   \begin{equation}
-    \sigma_{V,W}\from V\otimes W \to W\otimes V, \qquad v\otimes w \mapsto w\otimes v.
+    \tau_{V,W}\from V\otimes W \to W\otimes V, \qquad v\otimes w \mapsto w\otimes v.
   \end{equation}
 \end{definition}
 
@@ -2962,17 +3283,17 @@ We draw the tensor flip as a crossing.
   Consider linear maps \(f\from V\to W\) and \(g\ \from X\to Y\).
   The tensor flip satisfies
   \begin{equation}
-    \sigma_{W,Y}(f\otimes g)= (g\otimes f) \sigma_{V,X}.
+    \tau_{W,Y}(f\otimes g)= (g\otimes f) \tau_{V,X}.
   \end{equation}
 \end{lemma}
 \begin{proof}
   Given \(v\in V\) and \(x\in X\), we compute
   \begin{align*}
-    (\sigma_{W,Y}(f\otimes g))(v\otimes x)
-    & = \sigma_{W, Y} (f(v) \otimes g(x))
+    (\tau_{W,Y}(f\otimes g))(v\otimes x)
+    & = \tau_{W, Y} (f(v) \otimes g(x))
       = g(x) \otimes f(v) \\
     & = (g \otimes f)(x\otimes v)
-      = ((g\otimes f) \sigma_{W,X})(v\otimes x).
+      = ((g\otimes f) \tau_{W,X})(v\otimes x). \qedhere
   \end{align*}
 \end{proof}
 
@@ -3632,6 +3953,41 @@ The big advantage about mixed states in the context of  measurements is that we 
 
 \subsubsection*{States}
 
+\begin{exercise}
+  Consider linearly independent vectors \(v, w \in \mathbb{C}^{2}\) such that \( \|v \| = 1 = \|w\|\).
+  Prove that \([v]\) and \([w]\) are different states.
+\end{exercise}
+
+
+\begin{exercise}
+  The Hadamard gate is modelled by the unitary matrix \(H= \tfrac{1}{2}
+  \begin{psmallmatrix}
+    1 & 1 \\ 1 & -1
+  \end{psmallmatrix} \in \Mat_{2}( \mathbb{C}).
+  \)
+  Compute \(H\ket{0}\) and \(H \ket{1}\) and determine the associated points on the Bloch sphere.
+\end{exercise}
+
+\begin{exercise}
+  Find for each Pauli matrix \(\sigma \in\{\sigma_{x}, \sigma_{y}, \sigma_{z}\}\) and normalised eigenvector \(v \in \mathbb{C}^{2}\) of \(\sigma\) the point \(p_{v}\in S^{2}\) on the Bloch sphere associated to the state \([v]\).
+\end{exercise}
+
+\begin{exercise}
+  Suppose \(v, w \in \mathbb{C}^{2}\) are two normalised vectors such that \(\braket{v}{w}= 0\).
+  Let \(p_{v}, p_{w} \in S^{2} \) be the points on the Bloch sphere associated to the states \([v], [w]\).
+  Show that \(p_{v} = - p_{w}\).
+\end{exercise}
+
+\begin{exercise}
+  Consider a mixed state \(\varrho \from V\to V\).
+  Show that there are pure states \([v_{1}], \dots , [v_{n}]\) of \(V\) such that the associated mixed states \(\rho_{v_{1}}, \dots , \rho_{v_{n}}\) satisfy \(\varrho = \rho_{v_{1}}+ \dots + \rho_{v_{n}}\).
+\end{exercise}
+
+\begin{exercise}
+  Show that a mixed state \(\varrho \from V\to V\) corresponds to a  pure state \([\ket{v}]\) of \(V\) (that is, \(\varrho = \ket{v}\bra{v} \from V \to V \) if and only if \(\tr(\varrho^{2}) = 1\).
+  \textit{Hint:} What do you know about the eigenvalues of \(\varrho\)?
+\end{exercise}
+
 \subsubsection*{Compound systems}
 \begin{exercise}\label{exe:bilinear-vs-linear-hom}
   Show that there is a bijection
@@ -3651,6 +4007,16 @@ The big advantage about mixed states in the context of  measurements is that we 
 
   Show that a map \( \phi \from V \times V \to \mathbb{C} \) is sesquilinear if and only if the map \( \psi \from \overline{V} \times V \to \mathbb{C} \) defined by \( \psi(\overline{v}, w) = \phi(v, w) \) is bilinear.
 \end{exercise}
+
+\begin{exercise}\label{exe:schur-decomposition}
+  Given a square matrix \(A\in \Mat_{n}( \mathbb{C})\), show that there is a (unitary) matrix \(P \in \GL_{n}( \mathbb{C})\) such that \(A'= PAP^{-1}\) is upper triangular.
+  That is, \((A')_{ij} =0 \) if \(i<j\).
+
+  \textit{Hint:} The diagonal entries of \(A'\) must be the eigenvalues of \(A\) (counted with multiplicities).
+
+  \textit{Hint:} Can we give another good hint? Quotient spaces are not too good what about scalar products?
+\end{exercise}
+
 \subsubsection*{Unitary transformations}
 
 \subsubsection*{Measurement}
@@ -3708,7 +4074,31 @@ Is it unitary, self-adjoint, or positive semidefinite? Multiple answers can be t
 Is \((d(b_{1}), d(b_{2}), d(b_{3}))\) a basis of \(\rd*{ \mathbb{C}^{3}}\)?
 \end{thmlist}
 \subsubsection*{States}
-
+\begin{thmlist}
+  \item  Is the vector \( \tfrac{1}{5} \big(3\ket{0} + 4\ket{1}) \in \mathbb{C}^{2}\) normalised?
+  \item Calculate the norm of the vector \(\ket 0 + \ket 1\).
+  \item Find the complex numbers \(x, y\in \mathbb{C}\) such that \(
+  \begin{psmallmatrix}
+    x \\ y
+  \end{psmallmatrix} = 2\ket{0} - i\ket{1}\).
+  \item Do the vectors \(
+  \tfrac{1}{\sqrt{2}}
+  \begin{psmallmatrix}
+    1 \\1
+  \end{psmallmatrix}
+\) and \( \tfrac{1}{\sqrt{2}}
+  \begin{psmallmatrix}
+    1 \\-1
+  \end{psmallmatrix}\)
+  represent the same state?
+  \item Write the pure state \(\tfrac{1}{\sqrt{2}}
+  \begin{psmallmatrix}
+    1 \\1
+  \end{psmallmatrix} \in \mathbb{C}^{2}\) as a density matrix \(A \in \Mat_{2}( \mathbb{C})\).
+  \item Determine the density matrix associated to the point on the Bloch sphere \((\tfrac{1}{2}, 0, \tfrac{\sqrt{3}}{2})\in S^{2}\).
+  \item Does the matrix \(\tfrac{1}{2} \begin{psmallmatrix} 1 & 0 \\ 0 & 1 \end{psmallmatrix}\) represent the density matrix of a pure state?
+  \item Consider a density matrix \(M \in \Mat_{n}( \mathbb{C})\). What can be said about its eigenvalues?
+\end{thmlist}
 \subsubsection*{Compound systems}
 
 \subsubsection*{Unitary transformations}
