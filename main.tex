@@ -1124,8 +1124,8 @@ In Proposition~\ref{prop:basic-properties-of-trace}, we have already seen that t
 
 \begin{definition}\label{def:image-and-kernel}
   Consider two vector spaces \(V\) and \(W\) and a linear map \(f\ \from V \to W\).
-  Its \emph{kernel} is the subspace \(\{v \in V \mid f(v) = 0\} \subset V\).
-  The \emph{image} of \(f\) is the subspace \(\{f(v) \mid v\in V\} \subset W\).
+  Its \emph{kernel} is the subspace \(\ker f \eqdef \{v \in V \mid f(v) = 0\} \subset V\).
+  The \emph{image} of \(f\) is the subspace \(\im f \eqdef \{f(v) \mid v\in V\} \subset W\).
 \end{definition}
 
 Similar to matrices, the collection of all linear maps between two fixed vector spaces forms again a vector space.
@@ -1298,6 +1298,7 @@ These will be used to represent measurement outcomes in the quantum formalism. M
 \begin{definition}\label{def:projection}
   A \emph{projection} onto a subspace \(U \subset V\) is a linear map \(f\from V \to V\) such that \(\im f \eqdef\{ f(v) \mid v \in V\} = U\) and \(f(u) = u \) for all \(u \in U\).
 \end{definition}
+
 In other words, \( f \) acts as the identity on \( U \) and maps every vector in \( V \) to its ``component'' in \( U \) (with respect to a suitable decomposition of \( V= \ker f \oplus U \)).
 
 \begin{lemma}\label{lem:equivalent-characterisations-projections}
@@ -1307,10 +1308,32 @@ In other words, \( f \) acts as the identity on \( U \) and maps every vector in
     \item \(f\) is a projection onto its image \(\im f =\{f(v) \mid v\in V\}\).
     \item\(f^{2} = f\),
     \item for every  \(v\in V\) we have \(v\in \im(f)\) if and only if \(f(v) = v\), and
-    \item every vector \(v\in V\) can be written as a unique linear combination \(v= x+y\) with \(f(x) = 0\) and \(y\in \im(f)\).
-    In this case \(x= (\id_{V} -f) v\) and \(y = f(v)\).
+    \item every vector \(v\in V\) can be written as a unique linear combination \(v= x+f(v)\) with \(f(x) = 0\).
+    In this case \(x= (\id_{V} -f) v\).
   \end{thmlist}
 \end{lemma}
+\begin{proof}
+  We prove the equivalence by showing the cycle of implications: (i) \(\Rightarrow\) (ii) \(\Rightarrow\) (iii) \(\Rightarrow\) (iv) \(\Rightarrow\) (i).
+
+  \begin{thmlist}[leftmargin=5em]
+    \item[(i) \(\Rightarrow\) (ii):]
+    If \( f \) is a projection, then for any \( v \in V \), \( f(v) \in \im(f) \). Since \( f \) acts as the identity on its image, \( f^2(v) = f(f(v)) = f(v) \) and \( f^2 = f \).
+
+    \item[(ii) \(\Rightarrow\) (iii):]
+    Suppose \( f^2 = f \). If \( v \in \im(f) \), then \( v = f(w) \) for some \( w \in V \). Thus, \( f(v) = f(f(w)) = f(w) = v \). Conversely, if \( f(v) = v \), then \( v \in \im(f) \).
+
+    \item[(iii) \(\Rightarrow\) (iv):]
+    If \( \im(f) = \{ v \in V \mid f(v) = v \} \), then for any \( v \in V \), set \( x = (\id_V - f)(v) \). We have \( f(x) = f(v) - f^2(v) = 0 \) and \( v = x + f(v) \). This decomposition is unique because if \( v = x_1 + f(v) = x_2 + f(v) \), then \( x_1 = x_2 \).
+
+    \item[(iv) \(\Rightarrow\) (i):]
+    Consider an element \( w = f(v) \) in the image of \(f\) and write \( v = x + f(v) \) with \( f(x) = 0 \).
+    Applying \( f \) to both sides, we get
+    \begin{equation*}
+      w = f(v) = f(x) + f^2(v) = f^2(v) = f(w) .
+    \end{equation*}
+    Thus, \(f\)  acts as the identity on its image, making it a projection. \qedhere
+  \end{thmlist}
+\end{proof}
 
 Any transformation matrix \(_{\mathcal{B}}f_{\mathcal{B}}\) of a projector must square to itself.
 Subsequently, its eigenvalues can be either \(0\) or \(1\), leading to the following result.
@@ -1967,6 +1990,17 @@ There exists an orthogonal projection \( p \from V \to V \) onto \( U \) and an 
   Therefore, \(f\) is a partial isometry if and only if \(f^{\dagger}f\) is an orthogonal projection onto \(U\) and the claim follows from Lemma~\ref{lem:representing-orthogonal-projection} and Proposition~\ref{prop:adjoint-morph-is-adjoint-matrix}.
 \end{proof}
 
+\begin{remark}\label{rmk:isometries-vs-partial-isometries}
+  If  \(f \from V\to W\) is a partial isometry, the above proof shows that the map \(f^{\dagger} f \from V\to V\) is an orthogonal projection onto
+  \begin{equation*}
+    \ker f^{\perp} = \big\{v\in V \;\big\vert\; \braket{v}{w} = 0 \text{ for all } w\in W \text{ with } f(w) = 0 \big\}.
+  \end{equation*}
+  In case \(f\) is a (linear) isometry \(\ker f =\{0\}\) and therefore \(\ker f^{\perp} = V\), implying that \(f^{\dagger} f = \id_{V}\).
+
+  Put succinctly: a linear map \(g \from V \to W\) is an isometry if and only if \(g^{\dagger} g =\id_{V}\).
+\end{remark}
+
+
 Lastly, the third kind of map, is a special case of an isometry \(f\from V\to V\)  whose domain and codomain coincide.
 
 \begin{definition}\label{def:unitary-matrix}
@@ -1981,8 +2015,13 @@ Lastly, the third kind of map, is a special case of an isometry \(f\from V\to V\
   We denote the set of all unitary \( n \times n \) matrices by \( U(n) \).
 \end{definition}
 One easily verifies that upon choosing orthonormal bases, any unitary map is represented by a unitary matrix, see Exercise~\ref{exe:unitary-matrix-unitary-map}.
-\bigskip
 
+\begin{remark}\label{rmk:unitaries-are-isometrics}
+  Consider a unitary map \(f \from V\to V\). Remark~\ref{rmk:isometries-vs-partial-isometries} shows that it is in particular an isometry and therefore satisfies
+  \begin{equation*}
+    \braket{f(v)}{f(w)} = \braket{v}{w} \qquad\quad \text{ for all } v,w \in V.
+  \end{equation*}
+\end{remark}
 
 The concept of dual spaces arises naturally in the context of Hilbert spaces.
 By inserting a vector \( v \in V \) into the first entry of the inner product, we obtain a linear map
@@ -2131,7 +2170,7 @@ Thus, \(\tr(\rho_{\ket v})=1\) is equivalent to \(\ket{v}\) being normalised.
 \begin{proposition}\label{prop:density-matrix-perspective}
   There is an injective map
   \begin{equation}
-    \rho:\{\text{pure states of }V\}\to\{ \text{mixed stated of } V\}, \qquad \ket{v} \mapsto \rho_{\ket{v}} \eqdef \ket{v}\bra{v}
+    \{\text{pure states of }V\}\to\{ \text{mixed stated of } V\}, \qquad \ket{v} \mapsto \rho_{\ket{v}} \eqdef \ket{v}\bra{v}
   \end{equation}
   Its image coincides with the rank \(1\) mixed states.
 \end{proposition}
@@ -2139,13 +2178,13 @@ Thus, \(\tr(\rho_{\ket v})=1\) is equivalent to \(\ket{v}\) being normalised.
   Let \(\ket v \in V\) be normalised and let \( \mathcal{B} = (\ket{v}, \ket{b_2}, \dots, \ket{b_n}) \) be an orthonormal basis containing \( \ket{v} \).
   The transformation matrix of \( \rho_{\ket{v}} \) with respect to \( \mathcal{B} \) is \( \mathrm{diag}(1, 0, \dots, 0)\), which is clearly self-adjoint, positive semidefinite, and of rank 1.
 
-  Conversely, assume that \(\varrho \in \End(V)\) is a rank 1 mixed state.
+  Conversely, assume that \(\varrho \in \End(V)\) is a rank \(1\) mixed state.
   By the spectral Theorem~\ref{thm:spectral-theorem}, \(V\) admits an orthonormal basis \(\mathcal{B}= (\ket{b_{1}}, \ket{b_{2}}, \dots , \ket{b_{n}})\) of eigenvectors of \(\varrho\) corresponding to the eigenvalues \(\lambda_{1}\geq  \dots \geq \lambda_{n} \geq 0\).
   Since \(\rk \varrho\) coincides with the number of non-zero eigenvalues (counting multiplicities) and \(\tr(\varrho) = \lambda_{1} + \dots + \lambda_{n} = 1\), we have \(\lambda_{1} = 1\) and \(\lambda_{2} = \dots = \lambda_{n} = 0\).
   In particular \(_{\mathcal{B}}\varrho_{\mathcal{B}} = \mathrm{diag}(1,0, \dots , 0) = {}_{\mathcal{B}}{\rho_{\ket{b_{1}}}}_{\mathcal{B}}\) which implies that \(\varrho = \rho_{\ket{b_{1}}}\).
 
 
-  To show injectivity of \(\rho\), suppose \( \rho_{\ket{v}} = \rho_{\ket{w}} \) for two normalised vectors \(\ket{v}, \ket{w} \in V\).
+  To show injectivity, suppose \( \rho_{\ket{v}} = \rho_{\ket{w}} \) for two normalised vectors \(\ket{v}, \ket{w} \in V\).
   For any \( \ket{x} \in V \), we obtain
   \begin{equation*}
     \ket{v} \braket{v}{x}
@@ -3224,13 +3263,13 @@ Partial traces allow us to reduce a composite system to a smaller subsystem.
   \end{equation*}
 \end{proof}
 
-To see this procedure in action, we apply it to the Bell state on \( \mathbb{C}^{2}\otimes \mathbb{C}^{2}\).
+To see this procedure in action, we apply it to a  state on \( \mathbb{C}^{2}\otimes \mathbb{C}^{2}\).
 \begin{example}
-  Consider the pure represented by
+  Consider the the Bell state
   \begin{equation*}
-    \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11}).
+    \ket{\Phi^+} = \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})
   \end{equation*}
-  The corresponding mixed state is \(\rho = \ket{\Phi^{+}}\bra{\Phi^{+}}\in \End_{ \mathbb{C}}( \mathbb{C}^{2}\otimes \mathbb{C}^{2})\).
+  with corresponding mixed state \(\rho = \ket{\Phi^{+}}\bra{\Phi^{+}}\in \End_{ \mathbb{C}}( \mathbb{C}^{2}\otimes \mathbb{C}^{2})\).
   Its transformation matrix with respect to the computational basis \((\ket{00}, \ket{01}, \ket{10}, \ket{11})\) is
   \begin{equation*}
     \frac{1}{2}
@@ -3247,16 +3286,26 @@ To see this procedure in action, we apply it to the Bell state on \( \mathbb{C}^
     \braket{0}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 0}
     & = \braket{00}{\rho \mid 00} + \braket{01}{\rho \mid 01}
       = \tfrac{1}{2}, \\
-    \braket{0}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 1}
-    & = \braket{00}{\rho \mid 10} + \braket{01}{\rho \mid 11}
-      = 0, \\
     \braket{1}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 0}
     & = \braket{10}{\rho \mid 00} + \braket{11}{\rho \mid 01}
+      = 0, \\
+    \braket{0}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 1}
+    & = \braket{00}{\rho \mid 10} + \braket{01}{\rho \mid 11}
       = 0, \\
     \braket{1}{\mathrm{Tr}^{V}_{W,W}(\rho) \mid 1}
     & = \braket{10}{\rho \mid 10} + \braket{11}{\rho \mid 11}
       = \tfrac{1}{2}.
   \end{align*}
+  Thus, we get the mixed state \(\mathrm{Tr}^{V}_{W,W}(\rho) \from \mathbb{C}^{2}\to \mathbb{C}^{2}\), \(v\mapsto \tfrac{1}{2} v\).
+  As density matrix this is
+  \begin{equation*}
+    \frac{1}{2}
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}
+  \end{equation*}
+  Note that while \(\mathrm{Tr}^{V}_{W,W}(\rho)\) is self-adjoint, positive semidefinite, and of trace \(1\)---so in particular it is a mixed state---it is not a pure state anymore since it has rank \(2\).
 \end{example}
 
 Given two vector spaces \(V,W\) we have a bilinear map
@@ -3297,48 +3346,82 @@ We draw the tensor flip as a crossing.
   \end{align*}
 \end{proof}
 
+\begin{remark}\label{rmk:partial-traces-at-arbitrary-inputs}
+  Suppose we are given a linear map \( \rho \colon W \otimes V \to X \otimes V \).
+  Using the tensor flip, we can define the partial trace for the \( W \)-component as the composition
+  \begin{equation}
+    \mathrm{Tr}^{W}_{V,X}(\tau_{X,W} \circ \rho \circ \tau_{V,W}) \colon V \to X.
+  \end{equation}
+  In string diagrams, this is simply:
+  \begin{equation*}
+    \inputtikz{partial-trace-flip}
+  \end{equation*}
+
+  More generally, we can iteratively apply tensor flips to compute the partial trace of the \( k \)-th component of a map \( g \colon V_1 \otimes V_2 \otimes \dots \otimes V_n \to V_1 \otimes V_2 \otimes \dots \otimes V_n \).
+  By the braid relations, see Exercise~\ref{exe:braid-relations}, the result does not depend on the specific sequence of flips used.
+  To simplify notation, we write
+   \begin{equation}
+     \mathrm{Tr}^{V_k}_{V_1 \otimes \dots \otimes \widehat{V_k} \otimes \dots \otimes V_n} \from V_1 \otimes \dots \otimes \widehat{V_k} \otimes \dots \otimes V_n \to
+     W_1 \otimes \dots \otimes \widehat{V_k} \otimes \dots \otimes W_n
+   \end{equation}
+   for the partial trace applied to the \( k \)-th component.
+   Here \(\widehat{V_k}\) indicates that \( V_k \) is omitted.
+\end{remark}
+
+
 \subsection{Unitary transformations}\label{sec:unitary-transformations}
-Aside from measurements, unitary transformations are a central component of quantum algorithms.
+
+Unitary transformations are fundamental building blocks in quantum algorithms, serving as the quantum analog of classical logic gates.
+
 
 \begin{lemma}\label{lem:induced-map-on-states}
   Any unitary map \( f \from V \to V \) induces a well-defined map on states:
   \begin{equation}
-    \{\text{states of } V\} \to \{\text{states of } V\}, \qquad [\ket{v}] \mapsto [f\ket{v}].
+    \{\text{states of } V\} \to \{\text{states of } V\}, \qquad [v] \mapsto [f(v)].
   \end{equation}
-  Moreover, for any pair of states \( [\ket{v}] \) and \( [\ket{w}] \), there exists a unitary map \( f \) such that \( [f\ket{v}] = [\ket{w}] \).
+  Moreover, for any pair of states \( [v] \) and \( [w] \), there exists a unitary map \( f \from V\to V\) such that \( [fv] = [w] \).
 \end{lemma}
 \begin{proof}
   Since a state is an equivalence class of normalised vectors, we need to verify that \( f \) preserves norms and respects the equivalence relation.
-  For any \( \ket{v} \in V \)
+  For any \( v \in V \)
   \begin{equation*}
-    \|f\ket{v}\|^2
-    = \braket{f\ket{v}}{f\ket{v}}
-    = \braket{\ket{v}}{f^\dagger f\ket{v}}
-    = \braket{\ket{v}}{\ket{v}}
-    = \|\ket{v}\|^2.
+    \|f(v)\|^2
+    = \braket{f(v)}{f(v)}
+    = \braket{v}{f^\dagger f(v)}
+    = \braket{v}{v}
+    = \|v\|^2.
   \end{equation*}
-  Moreover, if \( \ket{v} = \lambda \ket{w} \), then \( f(\ket{v}) = \lambda f(\ket{w}) \), so the induced map is well-defined.
+  Moreover, if \( v = \lambda w \), then \( f(v) = \lambda f(w) \), so the induced map is well-defined.
 
-  To show the existence of a unitary map between any two states, consider two normalised vectors \( \ket{v} \) and \( \ket{w} \).
-  We fix  orthonormal bases \( (\ket{b_1}, \ket{b_2}, \dots, \ket{b_n}) \) and \((\ket{c_1}, \ket{c_2}, \dots, \ket{c_n})\) of \(V\) where \(\ket{b_{1}} = \ket v\) and \(\ket{c_{1}} = \ket w\).
+  To show the existence of a unitary map between any two states, consider two normalised vectors \( v \) and \( w \).
+  We fix  orthonormal bases \( (b_1, b_2, \dots, b_n) \) and \((c_1, c_2, \dots, c_n)\) of \(V\) where \(b_{1} = v\) and \(c_{1} =  w\).
   Next, we define the linear map \( f \colon V \to V \) by
   \begin{equation*}
-        f \ket{b_i} = \ket{c_i} \qquad  \text{for all } i = 1, \dots, n.
+        f (b_i) = c_i \qquad  \text{for all } i = 1, \dots, n.
   \end{equation*}
-  This map \( f \) is unitary since it maps an orthonormal basis to an orthonormal basis, and it satisfies \( f\ket{v} = \ket{w} \).
+ By construction, we have \(f(v) = w\) and
+ \begin{equation*}
+   \braket{b_{j}}{f^{\dagger}f\mid b_{i}} = \braket{f(b_{j})}{f(b_{i})} = \braket{c_{j}}{c_{i}} =
+   \begin{cases}
+     1 & \text{if } i = j, \\
+     0 & \text{otherwise.}
+   \end{cases}
+ \end{equation*}
+ This implies that \(f^{\dagger}f = \id_{V}\) and an analogous computation shows \(ff^{\dagger}=\id_{V}\).
 \end{proof}
 
 We now want to translate the action of unitaries on states to an operation on mixed states.
 
 \begin{remark}\label{rmk:unitaries-on-mixed-states}
-  Consider a normalised vector \(\ket{v} \in V \) and a unitary map \( f \from V \to V \).
-  We write \(\bra{f v} \eqdef d(f\ket{v})\) for the image of \(f\ket{v}\) under the Riesz-map \(d \from V \to \rd*{V}\).
-  The mixed state \(\rho_{f \ket{v}}\) acts on \(\ket{w} \in V\) by
+  Consider a normalised vector \(v \in V \) corresponding to the mixed state \(\rho_{v}\from V\to V\) and a unitary map \( f \from V \to V \).
+  Moreover, write \(w = f(v)\) and \(\rho_{w}\from V\to V\) for its mixed state.
+  For any \(x\in V\), we compute
   \begin{equation*}
-    \rho_{f \ket{v}}\ket{w}
-    = f \ket{v} \braket{ f v}{w}
-    = f \ket{v} \braket{v}{f^{\dagger}\mid w}
-    = (f \rho_{\ket v} f^{\dagger}) w.
+    \rho_{w}(x)
+    = w \braket{w}{x}
+    = f(v) \braket{f(v)}{x}
+    = f(v)\braket{v}{f^{\dagger}(x)}
+    = (f \circ \rho_{v} \circ f^{\dagger}) x.
   \end{equation*}
 \end{remark}
 
@@ -3984,7 +4067,8 @@ The big advantage about mixed states in the context of  measurements is that we 
 \end{exercise}
 
 \begin{exercise}
-  Show that a mixed state \(\varrho \from V\to V\) corresponds to a  pure state \([\ket{v}]\) of \(V\) (that is, \(\varrho = \ket{v}\bra{v} \from V \to V \) if and only if \(\tr(\varrho^{2}) = 1\).
+  Show that a mixed state \(\varrho \from V\to V\) corresponds to a  pure state \([\ket{v}]\) of \(V\) (that is, \(\varrho = \ket{v}\bra{v} \from V \to V \) if and only if \(\tr(\varrho^{2}) = 1\)).
+
   \textit{Hint:} What do you know about the eigenvalues of \(\varrho\)?
 \end{exercise}
 
@@ -3997,6 +4081,7 @@ The big advantage about mixed states in the context of  measurements is that we 
     (B(v) w \longmapsfrom (v,w)) &\longmapsfrom B
   \end{align*}
 \end{exercise}
+
 
 \begin{exercise}\label{exe:translating-bilinear-to-sesquilinear}
   To any vector space \( V \), we assign a new vector space structure on \(V\) with the same vector addition and scalar multiplication defined by
@@ -4016,6 +4101,100 @@ The big advantage about mixed states in the context of  measurements is that we 
 
   \textit{Hint:} Can we give another good hint? Quotient spaces are not too good what about scalar products?
 \end{exercise}
+
+\begin{exercise}
+  Let \(v, v' \in V\) and \(w, w'\in W\) be normalised vectors.
+  \begin{thmlist}
+    \item Write \((v + v') \otimes (w + w')\) as a linear combination of elementary tensors.
+    \item Find a vector in \( \mathbb{C}^{2} \otimes \mathbb{C}^{2}\) that is not an elementary tensor.
+    \item Is the vector \(v \otimes w\) normalised?
+    Compute its norm.
+    \item Compute the Kronecker product \(\sigma_{z} \otimes \sigma_{y}\) (where \(\sigma_{z}, \sigma_{y}\) are Pauli matrices).
+    \item Calculate \((\sigma_{z} \otimes \sigma_{y}) \ket{01}\).
+    \item What is the rank of \(\sigma_{x}\otimes \sigma_{z}\)?
+  \end{thmlist}
+\end{exercise}
+
+\begin{exercise}
+  Consider a mixed state \(\rho \from V\otimes W \to V\otimes W\) of rank \(1\).
+  Show that the corresponding state \(x \in V\otimes W\) is a separable if and only if \(\rho = \sum_{k=1}^{n} \lambda_{k} \phi_{k} \otimes \psi_{k}\) for \(\phi_{k} \from V\to V\) and \(\phi_{k} \from W\to W\) mixed states and real numbers \(\lambda_{k} > 0\) such that \(\sum_{k=1}^{n}\lambda_{k} =1\).
+
+  \textit{Hint:} Show that in the rank \(1\) case we can chose \(n=1\).
+  To that end, consider a vector \(x \in V\otimes W\) with \(\rho(V\otimes W)\) and compute
+  \(\braket{x}{\phi_{k} \otimes \psi_{k} \mid x}\).
+
+  \textit{Hint:} Apply the spectral theorem to show that for any mixed state \(\zeta \from X \to X\) one has \(\zeta(x) = 0\) if and only if \(\braket{x}{\zeta \mid x} = 0\).
+\end{exercise}
+
+\begin{exercise}
+  Prove for  finite-dimensional vector spaces \(V, W\)  the following identities and represent them as string diagrams.
+  \begin{thmlist}
+    \item \(\coev_{V} = \tau_{V,\rd*{V}}\tilde{\coev}_{V}\)
+    \item \(\ev_{V} = \tilde{\ev}_{V}\tau_{V,\rd*{V}}\)
+    \item \(\tau_{W,V}\tau_{V,W} = \id_{V,W}\)
+  \end{thmlist}
+\end{exercise}
+
+\begin{exercise}\label{exe:braid-relations}
+  Given vector spaces \(V,W, X\), show that
+  \begin{equation*}
+    (\tau_{W,X}\otimes \id_{V})(\id_{W}\otimes \tau_{V,W})(\tau_{V,W}\otimes \id_{X})
+    =
+    (\id_{X}\otimes \tau_{V,W})(\tau_{V,X} \otimes \id_{W})(\id_{V}\otimes \tau_{W,X}).
+  \end{equation*}
+
+  Let \(s \from\{1, \dots , n\} \to \{1, \dots , n\}\) be a bijection and consider two maps linear maps \(\chi, \zeta \from V_{1} \otimes \dots \otimes V_{n} \to V_{s(1)} \otimes \dots \otimes V_{s(n)}\) which are compositions of tensor flips and  with identities.
+  Specifically, each component in the composition is of the form
+  \begin{equation*}
+    \id_{V_1} \otimes \dots \otimes \id_{V_{k-1}} \otimes \tau_{V_k, V_{k+1}} \otimes \id_{V_{k+2}} \otimes \dots \otimes \id_{V_n}.
+  \end{equation*}
+  Show that  \(\chi = \zeta\).
+\end{exercise}
+
+\begin{exercise}
+  Let \(f\from V\to W\) be a morphism between finite-dimensional vector spaces.
+  Give a string diagrammatic proof of
+  \begin{equation*}
+    (\id_{\rd*{V}}\otimes f)\coev_{V} = (\rd*{f} \otimes \id_{V})\coev_{V}, \qquad
+    \ev_V (f \otimes \id_{\rd*{V}}) = \ev_{V}(\id_{V}\otimes \rd*{f})
+  \end{equation*}
+
+\end{exercise}
+
+\begin{exercise}
+  Let \(V\), \(W\) be two finite-dimensional vector space.
+  \begin{thmlist}
+    \item Show that \(\coev_{V\otimes W} = (\id_{V} \otimes \coev_{W}\otimes \id_{\rd*{V}})\coev_{V}\)
+    \item Fill in the correct letters such that the following equation holds
+    \begin{equation*}
+      \tilde{\ev}_{{V\otimes W}} = (\tilde{\ev}_{\square})(\square \otimes \tilde{\ev}_{\square} \otimes \square).
+    \end{equation*}
+
+    \item Prove diagrammatically that for any pair of linear maps \(f\from V\to V\) and \(g \from W \to W\), we have \(\tr(f \otimes g) = \tr(f)\tr(g)\).
+  \end{thmlist}
+\end{exercise}
+
+\begin{exercise}
+  Consider morphisms \(f \from V\to W\) and \(g \from W\to X\).
+  Show that for the dual morphism, we have
+  \(\rd*{(g\circ f)} = \rd*{f} \circ \rd*{g}\).
+\end{exercise}
+
+\begin{exercise}
+  Given a finite-dimensional vector space \(V\), find, using string diagrams, an isomorphism
+  \(\mathrm{dd}\from V \to \rrd*{V}\), where \(\rrd*{V}\) is the dual space of \(\rd*{V}\).
+\end{exercise}
+
+\begin{exercise}
+  Consider a matrix \(A \in \Mat_{n}( \mathbb{C})\).
+  Fill in the box of the following diagram in two different ways to get \(\tr(A)^{2}\), and \(\tr(A^{2})\), respectively.
+  \begin{equation*}
+    \inputtikz{determinant}
+  \end{equation*}
+\end{exercise}
+
+
+
 
 \subsubsection*{Unitary transformations}
 
@@ -4100,6 +4279,47 @@ Is \((d(b_{1}), d(b_{2}), d(b_{3}))\) a basis of \(\rd*{ \mathbb{C}^{3}}\)?
   \item Consider a density matrix \(M \in \Mat_{n}( \mathbb{C})\). What can be said about its eigenvalues?
 \end{thmlist}
 \subsubsection*{Compound systems}
+\begin{thmlist}
+  \item Suppose \(X= V\otimes W\) is an \(11\)-dimensional vector space. What can you say about the dimensions of \(V\) and \(W\)?
+  \item Is the map \(\mu \from \mathbb{C} \times \mathbb{C} \to \mathbb{C}\), \((w,z) \mapsto wz\) bilinear?
+  \item Simplify the sum \(
+  \begin{psmallmatrix}
+    1 \\ 0
+  \end{psmallmatrix} \otimes
+  \begin{psmallmatrix}
+     0 \\ 1
+  \end{psmallmatrix}
+  +
+  \begin{psmallmatrix}
+    1 \\ 0
+  \end{psmallmatrix} \otimes
+  \begin{psmallmatrix}
+    1 \\ 0
+  \end{psmallmatrix}
+\).
+  \item Compute the Kronecker product \(\sigma_{z}\otimes \sigma_{z}\) for the Pauli matrix \(\sigma_{z}\).
+  \item Find examples for states in \( \mathbb{C}^{2}\otimes \mathbb{C}^{2}\) that are  a product state, entangled, and in a superposition with respect to the computational basis (\(\ket{00},\ket{01}, \ket{10}, \ket{11}\)), respectively.
+  \item Consider normalised vectors \(v, v', w, w' \in \mathbb{C}^{2}\) such that \([v]=[v']\) as well as  \([w]=[w']\) represent the same state.
+  Explain this equivalence relation explicitly.
+  Then show that \([v\otimes w] = [v' \otimes w']\) needs not hold.
+  \item Let \(A , B \in \Mat_{2}( \mathbb{C})\) have integer eigenvalues.
+  Are the eigenvalues of \(A\otimes B\) integers?
+  \item Compute the length of \(\ket{00} + \ket{01} \in \mathbb{C}^{2}\).
+  \item Consider the following matrix
+  \begin{equation*}
+      A=\begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+  \end{pmatrix} \in \Mat_{4}(\mathbb{C}).
+\end{equation*}
+  Why are there no matrices \(B, C \in \Mat_{2}( \mathbb{C})\), such that \(A= B\otimes C\)?
+  \item Compute the partial trace \(\mathrm{Tr}_{ \mathbb{C}^{2}, \mathbb{C}^{2}}^{ \mathbb{C}^{2}}(A)\) (with respect to the second tensor factor) of the matrix \(A\) of the previous question.
+  \item Prove string diagramatically: If \(f \from V \to W\) and \(g \from X \to Y\) are isomorphisms, then \(f\otimes g \from V\otimes X \to W\otimes Y\) is an isomorphism as well.
+  \item Find a string diagram (only using crossings) that represents the map \(V^{\otimes 3}\to V^{\otimes 3}\),
+  \(v\otimes w \otimes x \mapsto x \otimes w \otimes v\).
+\end{thmlist}
 
 \subsubsection*{Unitary transformations}
 
@@ -4120,7 +4340,11 @@ Is \((d(b_{1}), d(b_{2}), d(b_{3}))\) a basis of \(\rd*{ \mathbb{C}^{3}}\)?
 \section{Quantum algorithms}\label{sec:quantum-algorithms}
 
 \begin{definition}\label{def:group}
-  A \emph{group} is a pair \((G, \bullet)\) comprising a set \( G \)  and a binary map
+  A \emph{group} is a pair
+  \begin{equation*}
+    (G, \bullet)
+  \end{equation*}
+  comprising a set \( G \)  and a binary map
   \begin{equation*}
     \bullet \from G \times G \to G, \qquad (g,h) \mapsto  g\bullet h,
   \end{equation*}
