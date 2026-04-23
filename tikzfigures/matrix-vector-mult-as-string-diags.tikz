@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (11) at (9, 4.25) {};
+		\node [style=none] (12) at (9, 0.75) {};
+		\node [style=none] (13) at (9, 0) {};
+		\node [style=none] (14) at (4.5, 0.35) {A vector is a box without an input.};
+		\node [style=none] (15) at (0, 4.25) {};
+		\node [style=none] (16) at (0, 0.75) {};
+		\node [style=none] (17) at (0, 0) {};
+		\node [style=none] (19) at (1.5, 3) {};
+		\node [style=none] (20) at (1.5, 3.5) {$\mathbb{C}^m$};
+		\node [isosceles triangle, draw, style=vector] (21) at (5.5, 3) {$v$};
+		\node [style=dagger-morph] (22) at (3.5, 3) {$A$};
+		\node [style=none] (25) at (1.5, 1.25) {};
+		\node [style=none] (26) at (1.5, 1.75) {$\mathbb{C}^m$};
+		\node [style=vector] (27) at (4.5, 1.25) {$Av$};
+		\node [style=none] (28) at (4.5, 2.25) {$=$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (13.center) to (11.center);
+		\draw (17.center) to (15.center);
+		\draw (11.center) to (15.center);
+		\draw (15.center) to (17.center);
+		\draw (17.center) to (13.center);
+		\draw (12.center) to (16.center);
+		\draw (15.center) to (11.center);
+		\draw [style=directed] (21) to (22);
+		\draw [style=directed] (22) to (19.center);
+		\draw [style=directed] (27) to (25.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

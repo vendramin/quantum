@@ -1,0 +1,41 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (15.5, 13) {};
+		\node [style=none] (3) at (15.5, 9) {};
+		\node [style=none] (5) at (15.5, 8.5) {};
+		\node [style=none] (24) at (12.25, 11) {};
+		\node [style=none] (25) at (12.25, 9.5) {};
+		\node [style=none] (26) at (15, 9.5) {};
+		\node [style=none] (28) at (9.5, 11) {};
+		\node [style=none] (29) at (7, 11) {};
+		\node [style=none] (30) at (10, 11) {$=$};
+		\node [style=none] (31) at (15, 9.75) {$\rd*{W}$};
+		\node [style=none] (32) at (9.5, 11.25) {$\rd*{W}$};
+		\node [style=none] (33) at (7, 11.25) {$\rd*{V}$};
+		\node [style=none] (34) at (10.5, 12.75) {$\rd*{V}$};
+		\node [style=none] (59) at (6.5, 9) {};
+		\node [style=none] (60) at (6.5, 8.5) {};
+		\node [style=none] (62) at (11, 8.75) {$\rd*{f} = (\id_{\rd*{V}}\otimes \ev_{W})(\id_{\rd*{V}}\otimes f \otimes \id_{\rd*{W}})(\coev_{V}\otimes \id_{\rd*{W}})$};
+		\node [style=none] (65) at (6.5, 13) {};
+		\node [style=none] (66) at (13.25, 12.5) {};
+		\node [style=none] (67) at (13.25, 11) {};
+		\node [style=none] (68) at (10.5, 12.5) {};
+		\node [style=dagger-morph] (69) at (12.75, 11) {$f$};
+		\node [style=dagger-morph, adjoint] (70) at (8.25, 11) {$\rd*{f}$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=directed, in=180, out=180, looseness=1.75] (24.center) to (25.center);
+		\draw [style=directed] (25.center) to (26.center);
+		\draw [style=directed, in=0, out=0, looseness=1.75] (66.center) to (67.center);
+		\draw [style=directed] (68.center) to (66.center);
+		\draw [style=object] (24.center) to (69);
+		\draw [style=object] (69) to (67.center);
+		\draw [style=directed] (70) to (28.center);
+		\draw [style=directed] (29.center) to (70);
+		\draw (65.center) to (1.center);
+		\draw (1.center) to (5.center);
+		\draw (5.center) to (60.center);
+		\draw (60.center) to (65.center);
+		\draw (3.center) to (59.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

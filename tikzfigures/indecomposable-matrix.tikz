@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (6.5, 2.75) {$\mathbb{C}^n$};
+		\node [style=none] (1) at (-1, 3.75) {};
+		\node [style=none] (2) at (-1, 0.75) {};
+		\node [style=none] (4) at (3.5, 0.375) {The Kronecker product $A\otimes B \in \Mat_{mp,nq}(\mathbb{C})$.};
+		\node [style=none] (5) at (8, 3.75) {};
+		\node [style=none] (8) at (8, 0.75) {};
+		\node [style=none] (12) at (0.5, 2.5) {};
+		\node [style=none] (13) at (6.5, 2.5) {};
+		\node [style=none] (14) at (0.5, 2.75) {$\mathbb{C}^m$};
+		\node [style=none] (15) at (4, 2.5) {};
+		\node [style=none] (17) at (-1, 0) {};
+		\node [style=none] (21) at (8, 0) {};
+		\node [style=none] (22) at (6.5, 1.75) {$\mathbb{C}^q$};
+		\node [style=none] (23) at (0.5, 1.5) {};
+		\node [style=none] (24) at (6.5, 1.5) {};
+		\node [style=none] (25) at (0.5, 1.75) {$\mathbb{C}^p$};
+		\node [style=none] (26) at (4, 1.5) {};
+		\node [style=dagger-morph, minimum height=3em] (27) at (3.5, 2) {C};
+		\node [style=none] (28) at (3, 2.5) {};
+		\node [style=none] (29) at (3, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (5.center);
+		\draw (2.center) to (8.center);
+		\draw [style=directed] (13.center) to (15.center);
+		\draw (17.center) to (21.center);
+		\draw (17.center) to (1.center);
+		\draw (21.center) to (5.center);
+		\draw (5.center) to (21.center);
+		\draw (21.center) to (17.center);
+		\draw [style=directed] (24.center) to (26.center);
+		\draw [style=directed] (29.center) to (23.center);
+		\draw [style=directed] (28.center) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

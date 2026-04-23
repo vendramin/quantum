@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (6.5, 3) {$V$};
+		\node [style=none] (1) at (8, 4) {};
+		\node [style=none] (2) at (8, 1) {};
+		\node [style=none] (4) at (3.5, 0.625) {The linear map $f\from V\to W$ is represented as a labelled box.};
+		\node [style=none] (5) at (-1, 4) {};
+		\node [style=none] (8) at (-1, 1) {};
+		\node [style=none] (12) at (6.5, 2.5) {};
+		\node [style=none] (13) at (0.5, 2.5) {};
+		\node [style=none] (14) at (0.5, 3) {$W$};
+		\node [style=dagger-morph] (15) at (3.5, 2.5) {$f$};
+		\node [style=none] (17) at (8, 0.25) {};
+		\node [style=none] (21) at (-1, 0.25) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (5.center);
+		\draw (2.center) to (8.center);
+		\draw [style=directed] (12.center) to (15);
+		\draw [style=directed] (15) to (13.center);
+		\draw (17.center) to (21.center);
+		\draw (17.center) to (1.center);
+		\draw (21.center) to (5.center);
+		\draw (5.center) to (21.center);
+		\draw (21.center) to (17.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (6.5, 3.25) {$\mathbb{C}^n$};
+		\node [style=none] (1) at (-1, 4) {};
+		\node [style=none] (2) at (-1, 1) {};
+		\node [style=none] (4) at (3.5, 0.625) {The matrix $A\otimes B\in \Mat_{mp,nq}(\mathbb{C})$.};
+		\node [style=none] (5) at (8, 4) {};
+		\node [style=none] (8) at (8, 1) {};
+		\node [style=none] (12) at (0.5, 3) {};
+		\node [style=none] (13) at (6.5, 3) {};
+		\node [style=none] (14) at (0.5, 3.25) {$\mathbb{C}^m$};
+		\node [style=dagger-morph] (15) at (3.5, 3) {$A$};
+		\node [style=none] (17) at (-1, 0.25) {};
+		\node [style=none] (21) at (8, 0.25) {};
+		\node [style=none] (22) at (6.5, 1.75) {$\mathbb{C}^q$};
+		\node [style=none] (23) at (0.5, 1.5) {};
+		\node [style=none] (24) at (6.5, 1.5) {};
+		\node [style=none] (25) at (0.5, 1.75) {$\mathbb{C}^p$};
+		\node [style=dagger-morph] (26) at (3.5, 1.5) {$B$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (5.center);
+		\draw (2.center) to (8.center);
+		\draw [style=directed] (15) to (12.center);
+		\draw [style=directed] (13.center) to (15);
+		\draw (17.center) to (21.center);
+		\draw (17.center) to (1.center);
+		\draw (21.center) to (5.center);
+		\draw (5.center) to (21.center);
+		\draw (21.center) to (17.center);
+		\draw [style=directed] (26) to (23.center);
+		\draw [style=directed] (24.center) to (26);
+	\end{pgfonlayer}
+\end{tikzpicture}

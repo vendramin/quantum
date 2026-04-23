@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 4.5) {};
+		\node [style=none] (1) at (0, 1) {};
+		\node [style=none] (2) at (8, 4.5) {};
+		\node [style=none] (3) at (8, 1) {};
+		\node [style=none] (4) at (8, 0) {};
+		\node [style=none] (5) at (0, 0) {};
+		\node [style=none] (6) at (7, 2.5) {};
+		\node [style=vector, dual] (7) at (5, 2.5) {$v$};
+		\node [style=vector] (8) at (3, 2.5) {$v$};
+		\node [style=none] (9) at (1, 2.5) {};
+		\node [style=none] (10) at (4, 0.5) {The density matrix $\ket{v}\bra{v}$.};
+		\node [style=none] (11) at (7, 3) {$V$};
+		\node [style=none] (13) at (1, 3) {$V$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=directed] (6.center) to (7);
+		\draw [style=directed] (8) to (9.center);
+		\draw (0.center) to (2.center);
+		\draw (2.center) to (4.center);
+		\draw (4.center) to (5.center);
+		\draw (5.center) to (0.center);
+		\draw (1.center) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

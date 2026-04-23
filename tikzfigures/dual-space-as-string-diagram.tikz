@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (1) at (5.5, 2) {$\rd*{V}$};
+		\node [style=none] (2) at (0, 3) {};
+		\node [style=none] (5) at (0, 0.5) {};
+		\node [style=none] (6) at (0, 0) {};
+		\node [style=none, align=center, text width=7cm] (8) at (4, 0.25) {The dual $\rd*{V}$ of a finite-dimensional vector space $V$.};
+		\node [style=none] (11) at (8, 3) {};
+		\node [style=none] (14) at (8, 0.5) {};
+		\node [style=none] (15) at (8, 0) {};
+		\node [style=none] (18) at (2.5, 2) {};
+		\node [style=none] (19) at (2.5, 2) {$\rd*{V}$};
+		\node [style=none] (20) at (2.5, 1.5) {};
+		\node [style=none] (21) at (5.5, 1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (2.center);
+		\draw (15.center) to (11.center);
+		\draw (2.center) to (11.center);
+		\draw (11.center) to (15.center);
+		\draw (15.center) to (6.center);
+		\draw (5.center) to (14.center);
+		\draw [style=directed] (20.center) to (21.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

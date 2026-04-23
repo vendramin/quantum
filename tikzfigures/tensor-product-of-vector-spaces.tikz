@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0.5, 3.5) {$V$};
+		\node [style=none] (1) at (0, 4) {};
+		\node [style=none] (2) at (0, 1) {};
+		\node [style=none] (3) at (0.5, 3) {};
+		\node [style=none] (4) at (5.5, 3) {};
+		\node [style=none] (5) at (5.5, 3.5) {$V$};
+		\node [style=none] (7) at (0, 0) {};
+		\node [style=none] (9) at (6, 4) {};
+		\node [style=none] (10) at (6, 1) {};
+		\node [style=none] (15) at (6, 0) {};
+		\node [style=none] (35) at (3, 0.5) {The tensor product $V\otimes W$};
+		\node [style=none] (36) at (0.5, 2) {$W$};
+		\node [style=none] (37) at (0.5, 1.5) {};
+		\node [style=none] (38) at (5.5, 1.5) {};
+		\node [style=none] (39) at (5.5, 2) {$W$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (7.center) to (1.center);
+		\draw (1.center) to (9.center);
+		\draw (2.center) to (10.center);
+		\draw (7.center) to (15.center);
+		\draw (15.center) to (7.center);
+		\draw (9.center) to (15.center);
+		\draw [style=directed] (4.center) to (3.center);
+		\draw [style=directed] (38.center) to (37.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

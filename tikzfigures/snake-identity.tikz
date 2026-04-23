@@ -1,0 +1,109 @@
+\begin{tikzpicture}[scale=0.95]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0.5, 13) {};
+		\node [style=none] (2) at (15.5, 13) {};
+		\node [style=none] (3) at (0.5, 9) {};
+		\node [style=none] (5) at (15.5, 9) {};
+		\node [style=none] (6) at (0.5, 8.5) {};
+		\node [style=none] (8) at (15.5, 8.5) {};
+		\node [style=none] (9) at (0.5, 4.5) {};
+		\node [style=none] (11) at (15.5, 4.5) {};
+		\node [style=none] (12) at (0.5, 4) {};
+		\node [style=none] (13) at (8, 4) {};
+		\node [style=none] (14) at (15.5, 4) {};
+		\node [style=none] (16) at (2.75, 9.5) {};
+		\node [style=none] (27) at (2.75, 11) {};
+		\node [style=none] (28) at (2.75, 12.5) {};
+		\node [style=none] (29) at (1, 12.5) {};
+		\node [style=none] (30) at (4.5, 9.5) {};
+		\node [style=none] (31) at (5.5, 11) {};
+		\node [style=none] (32) at (7.5, 11) {};
+		\node [style=none] (33) at (5, 11) {$=$};
+		\node [style=none] (34) at (4.5, 10) {$V$};
+		\node [style=none] (35) at (5.5, 11.25) {$V$};
+		\node [style=none] (36) at (7.5, 11.25) {$V$};
+		\node [style=none] (37) at (1, 12.75) {$V$};
+		\node [style=none] (38) at (10.25, 12.5) {};
+		\node [style=none] (39) at (10.25, 11) {};
+		\node [style=none] (40) at (10.25, 9.5) {};
+		\node [style=none] (41) at (8.5, 9.5) {};
+		\node [style=none] (42) at (12, 12.5) {};
+		\node [style=none] (43) at (13, 11) {};
+		\node [style=none] (44) at (15, 11) {};
+		\node [style=none] (45) at (12.5, 11) {$=$};
+		\node [style=none] (46) at (12, 12.75) {$\rd*{V}$};
+		\node [style=none] (47) at (13, 11.25) {$\rd*{V}$};
+		\node [style=none] (48) at (15, 11.25) {$\rd*{V}$};
+		\node [style=none] (49) at (8.5, 9.75) {$\rd*{V}$};
+		\node [style=none] (50) at (10.25, 8) {};
+		\node [style=none] (51) at (10.25, 6.5) {};
+		\node [style=none] (52) at (10.25, 5) {};
+		\node [style=none] (53) at (12, 5) {};
+		\node [style=none] (54) at (8.5, 8) {};
+		\node [style=none] (55) at (15, 6.5) {};
+		\node [style=none] (56) at (13, 6.5) {};
+		\node [style=none] (57) at (12.5, 6.5) {$=$};
+		\node [style=none] (58) at (8.5, 8.25) {$\rd*{V}$};
+		\node [style=none] (59) at (15, 6.75) {$\rd*{V}$};
+		\node [style=none] (60) at (13, 6.75) {$\rd*{V}$};
+		\node [style=none] (61) at (12, 5.25) {$\rd*{V}$};
+		\node [style=none] (62) at (2.75, 5) {};
+		\node [style=none] (63) at (2.75, 6.5) {};
+		\node [style=none] (64) at (2.75, 8) {};
+		\node [style=none] (65) at (4.5, 8) {};
+		\node [style=none] (66) at (1, 5) {};
+		\node [style=none] (70) at (1, 5.25) {$V$};
+		\node [style=none] (73) at (4.5, 8.25) {$V$};
+		\node [style=none] (74) at (5.5, 6.5) {};
+		\node [style=none] (75) at (7.5, 6.5) {};
+		\node [style=none] (76) at (5, 6.5) {$=$};
+		\node [style=none] (77) at (5.5, 6.75) {$V$};
+		\node [style=none] (78) at (7.5, 6.75) {$V$};
+		\node [style=none] (79) at (8, 9) {};
+		\node [style=none] (80) at (8, 8.5) {};
+		\node [style=none] (81) at (4.25, 8.75) {
+    $(\id_{V} \otimes \widetilde{\ev}_{V})(\widetilde{\coev}_{V} \otimes \id_{V}) = \id_{V}$
+    };
+		\node [style=none] (82) at (11.75, 8.75) {
+    $(\widetilde{\ev}_{V} \otimes \id_{\rd*{V}})(\id_{\rd*{V}} \otimes \widetilde{\coev}_{V} ) = \id_{\rd*{V}}$
+    };
+		\node [style=none] (83) at (4.25, 4.25) {
+    $(\ev_{V}\otimes \id_{V})(\id_{V} \otimes \coev_{V}) = \id_{V}$
+    };
+		\node [style=none] (84) at (11.75, 4.25) {
+    $(\id_{\rd*{V}}\otimes \ev_{V})(\coev_{V} \otimes \id_{\rd*{V}}) = \id_{\rd*{V}}$
+    };
+		\node [style=none] (85) at (8, 13) {};
+		\node [style=none] (86) at (8, 5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (12.center);
+		\draw (2.center) to (14.center);
+		\draw (14.center) to (12.center);
+		\draw (0.center) to (2.center);
+		\draw (3.center) to (5.center);
+		\draw (8.center) to (6.center);
+		\draw (9.center) to (11.center);
+		\draw [style=directed, in=0, out=0, looseness=1.75] (27.center) to (28.center);
+		\draw [style=directed, in=-180, out=180, looseness=1.75] (16.center) to (27.center);
+		\draw [style=directed] (28.center) to (29.center);
+		\draw [style=directed] (30.center) to (16.center);
+		\draw [style=directed] (32.center) to (31.center);
+		\draw [style=directed, in=0, out=0, looseness=1.75] (40.center) to (39.center);
+		\draw [style=directed, in=-180, out=180, looseness=1.75] (39.center) to (38.center);
+		\draw [style=directed] (41.center) to (40.center);
+		\draw [style=directed] (38.center) to (42.center);
+		\draw [style=directed] (43.center) to (44.center);
+		\draw [style=directed, in=-180, out=-180, looseness=1.75] (51.center) to (52.center);
+		\draw [style=directed, in=0, out=0, looseness=1.75] (50.center) to (51.center);
+		\draw [style=directed] (52.center) to (53.center);
+		\draw [style=directed] (54.center) to (50.center);
+		\draw [style=directed] (56.center) to (55.center);
+		\draw [style=directed, in=-180, out=-180, looseness=1.75] (64.center) to (63.center);
+		\draw [style=directed, in=0, out=0, looseness=1.75] (63.center) to (62.center);
+		\draw [style=directed] (65.center) to (64.center);
+		\draw [style=directed] (62.center) to (66.center);
+		\draw [style=directed] (75.center) to (74.center);
+		\draw (85.center) to (13.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (10, 4.5) {$V_1$};
+		\node [style=none] (1) at (0, 5.25) {};
+		\node [style=none] (2) at (0, 0.75) {};
+		\node [style=none] (4) at (7, 0.375) {We can also have such ``spider-like'' pictures for maps $f \from V_1\otimes V_2\otimes \dots \otimes V_n \to W_1\otimes  W_2\otimes \dots\otimes W_m$.};
+		\node [style=none] (5) at (14, 5.25) {};
+		\node [style=none] (8) at (14, 0.75) {};
+		\node [style=none] (12) at (4, 4.25) {};
+		\node [style=none] (13) at (10, 4.25) {};
+		\node [style=none] (14) at (4, 4.5) {$W_1$};
+		\node [style=dagger-morph] (15) at (7, 2.75) {$f$};
+		\node [style=none] (17) at (0, 0) {};
+		\node [style=none] (21) at (14, 0) {};
+		\node [style=none] (22) at (10, 1.5) {$V_n$};
+		\node [style=none] (24) at (10, 1.25) {};
+		\node [style=none] (26) at (10, 3.5) {$V_2$};
+		\node [style=none] (27) at (10, 3.25) {};
+		\node [style=none] (28) at (4, 3.25) {};
+		\node [style=none] (29) at (4, 3.5) {$W_2$};
+		\node [style=none] (30) at (4, 1.25) {};
+		\node [style=none] (31) at (4, 1.5) {$W_m$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (5.center);
+		\draw (2.center) to (8.center);
+		\draw (17.center) to (21.center);
+		\draw (17.center) to (1.center);
+		\draw (21.center) to (5.center);
+		\draw (5.center) to (21.center);
+		\draw (21.center) to (17.center);
+		\draw [style=directed, in=45, out=-180] (13.center) to (15);
+		\draw [style=directed, in=0, out=-180] (27.center) to (15);
+		\draw [style=directed, in=315, out=180] (24.center) to (15);
+		\draw [style=directed, in=0, out=-135] (15) to (30.center);
+		\draw [style=directed, in=360, out=180] (15) to (28.center);
+		\draw [style=directed, in=360, out=135] (15) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

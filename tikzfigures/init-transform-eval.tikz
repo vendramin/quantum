@@ -1,0 +1,32 @@
+\begin{tikzpicture}[scale=0.9]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (14, 5) {};
+		\node [style=none] (1) at (0.5, 5) {};
+		\node [style=none] (2) at (14, 2.5) {};
+		\node [style=none] (3) at (0.5, 2.5) {};
+		\node [style=none] (4) at (10, 5) {};
+		\node [style=none] (5) at (4.5, 5) {};
+		\node [style=none] (6) at (10, 2.5) {};
+		\node [style=none] (7) at (4.5, 2.5) {};
+		\node [style=none] (8) at (14, 2) {};
+		\node [style=none] (9) at (0.5, 2) {};
+		\node [style=none] (11) at (12, 4.65) {initialisation};
+		\node [style=none] (13) at (7.25, 4.65) {transformation};
+		\node [style=none] (15) at (2.5, 4.65) {evaluation};
+		\node [style=vector] (16) at (12, 3.5) {$\ket{v}$};
+		\node [style=dagger-morph] (17) at (7.25, 3.5) {$f$};
+		\node [style=vector, dual] (18) at (2.5, 3.5) {$\bra{\phi}$};
+		\node [style=none] (19) at (7.25, 2.25) {The string diagrammatic representation of $\braket{\phi}{f\mid v}.$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (2.center) to (3.center);
+		\draw (1.center) to (0.center);
+		\draw [dashed] (4.center) to (6.center);
+		\draw [dashed] (5.center) to (7.center);
+		\draw (0.center) to (8.center);
+		\draw (8.center) to (9.center);
+		\draw (9.center) to (1.center);
+		\draw [style=directed] (16) to (17);
+		\draw [style=directed] (17) to (18);
+	\end{pgfonlayer}
+\end{tikzpicture}
