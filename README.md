@@ -1,8 +1,23 @@
-These are some lecture notes for a graduate level course on mathematical aspects of quantum computing, held at the Uni Marburg in the summer term 2026. 
+ Mathematical Aspects of Quantum Computing (Summer 2026)
 
-*Remarks:* 
-(i) To compile the notes you need to use the style.sty (in the style-file directory).
-(ii) If you want to compile the notes using the _externalise_ option you need to
-     (a) enable write18 for pdflatex, and
-     (b) create a "figures" folder for the figures to be compiled into.
-     Also note that the first run will take longer than usual since all the figures need to be externalised.
+These are lecture notes for a graduate-level course on some mathematical aspects of quantum computing, held at the University of Marburg during the summer term of 2026.
+
+# What (not) to expect
+
+Here, you get the most recent version of the notes. This may include some sketched and incomplete section and parts that are under development. Proceed with caution. 
+
+# Compilation Instructions
+
+To compile these notes, please follow the guidelines below:
+
+### 1. Style Requirements
+You must use the `style.sty` file located in the `style-file/` directory. 
+This stylesheet assumes a full **TeX Live** installation is available on your machine.
+
+### 2. Externalisation 
+If you wish to compile the notes using the **externalise** option, you need to:
+
+* **Enable Shell Escape:** Ensure `write18` (shell escape) is enabled for `pdflatex`.
+* **Create Figures Directory:** Manually create a folder named `figures/` in the root directory for the compiled graphics.
+
+> **Note:** The first compilation run will take significantly longer than usual because all figures must be generated and externalised. Subsequent runs will be much faster though.
