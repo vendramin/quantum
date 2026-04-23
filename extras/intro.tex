@@ -1,0 +1,178 @@
+\documentclass[aspectratio=169, 12pt, final, professionalfont]{beamer}
+
+% --- General settings
+
+\usepackage[final, externalise, type=beamer, font= libertine, beamerOptions={block=fill}]{style}%
+
+
+\title{Quantum computing}%
+\subtitle{Lecture 1}%
+% TODO link to these slides on webpage
+\mainref[https://sebastianhalbig.github.io/notes/quantum-computing-orga.pdf]{}%
+\author[Sebastian Halbig]{%
+  \centering{ Prof. \ Istvan Heckenberger \qquad  Dr. \ Sebastian Halbig\\[2\baselineskip]
+    \footnotesize\texttt{%
+      \href{mailto:heckenberger@mathematik.uni-marburg.de}{heckenberger@mathematik.uni-marburg.de} \\ \href{mailto:Sebastian.Halbig@uni-marburg.de}{Sebastian.Halbig@uni-marburg.de}%
+    }}%
+}%
+
+\date{\today}%
+
+\institute{%
+  Philipps Universität Marburg%
+  \hfil \textbullet \hfil%
+  Hans-Meerwein-Straße 6%
+  \hfil \textbullet \hfil%
+  35043 Marburg%
+  \hfil \textbullet \hfil%
+  Germany%
+  \hfil \hfil%
+}%
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}\frametitle{First things first: organisation}
+
+  \begin{itemize}
+    \item 2 lectures per week: ~90 minutes each
+    \begin{itemize}
+      \item Wed. 10.15--11.45 lecture hall 04A30 HS IV
+      \item Fri. 10.15--11.45 lecture hall 04A30 HS IV
+    \end{itemize}
+    \item Getting in touch and getting help:
+    \begin{itemize}
+      \item talk to us, feel free to ask all questions.
+      \item in-person meetings (offices are 04C34 and 04C35).
+      \item reach out by mail; return time is usually on the same day.
+      Please write again if you do not get a timely answer.
+      \item use the ILIAS-forum.
+      % \item \textit{Experimental:}  \mbox{\url{https://cryptpad.fr/slide/\#/2/slide/edit/LsSnghRgEYmtHjzTk0ZsbPc6/}}
+      % \qrcode[]{https://cryptpad.fr/slide/\#/2/slide/edit/LsSnghRgEYmtHjzTk0ZsbPc6/}
+    \end{itemize}
+    \item If things do not go according to plan ( health issues,  family issues, ...): reach out to us quickly so we can find a solution!
+     \item We plan an excursion to the ``Baby Diamond''  quantum computer in Frankfurt during the semester.
+  \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{Prerequisites}
+  \begin{itemize}
+    \item You should know basic linear algebra (matrix-vector, matrix-matrix-multiplication, ...)
+    \item The learning curve will be steep! The course requires at least 6-10h of work per week outside the classroom!
+  \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{How to successfully pass the course}
+  \begin{itemize}
+    \item Participate!
+    \begin{itemize}
+      \item Come to the lectures and be active. ``Active'' could mean:
+      \begin{itemize}
+        \item try to ask a question once per week
+        \item talk to us after/before the lecture
+        \item go to office hours
+      \end{itemize}
+    \end{itemize}
+    \item Exercises
+    \begin{itemize}
+      \item Each chapter of the lecture notes has exercises  + study goals.
+      \item Training weekly with the exercises is \emph{central} to your success!
+      \item There will not be any model solutions but feel free to discuss your ideas and problems with us.
+      \item Form study groups!
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{How to successfully pass the course}
+  \begin{itemize}
+    \item Coursework
+    \begin{itemize}
+      \item At least 3 discussions of 10-20 mins each about a block of exercises + questions from us to get an understanding of your knowledge.
+      \only<1>{      \begin{block}{Sample exercise block}
+          Let \(z_1 = 3 + 4i\) and \(z_2 = 1 - i\).
+          \begin{enumerate}
+            \item Express \(z_1 + z_2\), \(z_1 z_2\), and \(z_1 / z_2\) in Cartesian form (\ie as linear combinations \(a + ib \in \mathbb{C})\).
+            \item Write \(z_2\) in polar form \(re^{2\pi i \alpha}\).
+            \item Find a complex number \(u\) such that \(u^{3}= z_{2}\).
+            \item Determine \emph{integers} \(p,q \in \mathbb{Z}\) such that \(z_{1}^{2} + p z_{1} + q = 0\).
+            \item Prove that for any \(z \in \mathbb{C}\setminus\{0\}\), we have \(z^{-1} = \tfrac{\overline{z}}{||z||}\).
+          \end{enumerate}
+        \end{block}
+      }\pause
+      \item Your task: prepare and understand(!) solutions to these exercises, upload them, and then present them.
+      \item The answers to our questions are part of your assessment!
+      \item You need to pass 2 of these discussions.\\[0.25\baselineskip]
+      \item \textbf{Preparation}: 3 slots of weekly group meetings of 45 minutes for up to 8 persons tutored by Prof.\ Heckenberger and me.
+      The time slots can also be book using ILIAS.\\[0.25\baselineskip]
+      \item Place of the discussions: will be announced on ILIAS.
+      \item Slots for the discussions must be booked using ILIAS.
+    \end{itemize}
+  \end{itemize}
+  \end{frame}
+  \begin{frame}\frametitle{How to successfully pass the course}
+    \begin{itemize}
+      \item Mock exams:
+      \begin{itemize}
+        \item We will try to organise 2 mock exams during the semester.
+        \item \textbf{Note:} Inevitably the real exam will have additional topics (because there are lectures between the mock and the real exam).
+      \end{itemize}
+       \item Exam:
+    \begin{itemize}
+      \item Two time slots: July and September
+      \item Details will be communicated in due time (once we know how many students we have, ...).
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{Why should I study quantum computing?}
+  \begin{itemize}
+    \item Quantum technology is an emerging branch, see \eg \url{https://worldquantumday.org/}
+    \item Quantum computers have many fascinating facets (engineering, physics, computer science,  mathematics, ....),
+    \item Topics for ongoing research. \\
+    \phantom{Indent} In our group: topological quantum computing.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{What is the content of the course?}
+  You might have heard: quantum computers will be able to break RSA encryption.
+  \begin{itemize}
+    \item First half: We will learn, from a math perspective, what this precisely means:
+    \begin{itemize}
+      \item ``languages'' for quantum computing
+      \begin{itemize}
+        \item Hilbert spaces, ...
+        \item ZX-calculus
+      \end{itemize}
+      \item  quantum algorithms
+      \begin{itemize}
+        \item Deutsch--Jozsa (see the lecture notes for a non-mathematical introduction)
+        \item Grover ( for e.g. efficiently searching through data)
+        \item Shor (this is used to break encryption)
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\begin{frame}\frametitle{What is the content of the course?}
+  \begin{center}
+    \includegraphics[scale=0.21]{linked-image.png}
+  \end{center}
+\end{frame}
+\begin{frame}\frametitle{What is the content of the course?}
+  \begin{itemize}
+    \item Second half
+    \begin{itemize}
+      \item Universal quantum computing
+      \begin{itemize}
+        \item Efficient Classical Simulation?
+        \item Universality
+        \item Equivalence of universal models
+      \end{itemize}
+      \item quantum error correction
+      \begin{itemize}
+        \item Why do classical error-correction strategies fail
+        \item Threshold for error correction
+        \item 9-qubit code
+        \item toric code
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+\end{document}
